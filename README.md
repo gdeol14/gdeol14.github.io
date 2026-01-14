@@ -1,1 +1,0 @@
-# gdeol14.github.io
