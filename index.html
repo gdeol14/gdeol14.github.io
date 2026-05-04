@@ -21,6 +21,7 @@
     --red: #f87171;
     --green: #4ade80;
     --blue: #60a5fa;
+    --purple: #a78bfa;
     --text: #e4e4e7;
     --text-dim: #71717a;
     --text-faint: #3f3f46;
@@ -37,45 +38,9 @@ body {
     background: var(--bg);
     color: var(--text);
     overflow-x: hidden;
-    cursor: none;
 }
 
-/* ─── CUSTOM CURSOR ─── */
-.cursor {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s, background 0.2s;
-    mix-blend-mode: screen;
-}
-
-.cursor-ring {
-    position: fixed;
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
-    opacity: 0.6;
-}
-
-.cursor.hover { width: 16px; height: 16px; }
-.cursor-ring.hover { width: 56px; height: 56px; opacity: 0.3; }
-
-@media (max-width: 900px) {
-    body { cursor: auto; }
-    .cursor, .cursor-ring { display: none; }
-}
-
-/* ─── NOISE + GRID ─── */
+/* ─── BACKGROUND LAYERS ─── */
 body::before {
     content: '';
     position: fixed;
@@ -99,38 +64,50 @@ body::before {
     -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
 }
 
-/* ─── GLOWING ORBS ─── */
 .orb {
     position: fixed;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(100px);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .orb-1 {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(244,195,61,0.3) 0%, transparent 70%);
-    top: -100px; left: -100px;
-    animation: drift1 20s ease-in-out infinite;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(244,195,61,0.35) 0%, transparent 70%);
+    top: -200px; left: -150px;
+    animation: drift1 25s ease-in-out infinite;
 }
 
 .orb-2 {
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(96,165,250,0.15) 0%, transparent 70%);
-    bottom: 10%; right: -100px;
-    animation: drift2 25s ease-in-out infinite;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(96,165,250,0.2) 0%, transparent 70%);
+    bottom: 10%; right: -150px;
+    animation: drift2 30s ease-in-out infinite;
 }
 
 @keyframes drift1 {
     0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(50px, 80px); }
+    50% { transform: translate(80px, 100px); }
 }
 
 @keyframes drift2 {
     0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(-60px, -40px); }
+    50% { transform: translate(-80px, -60px); }
+}
+
+/* ─── PROGRESS BAR ─── */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--gold2));
+    z-index: 200;
+    width: 0%;
+    box-shadow: 0 0 12px var(--gold);
+    transition: width 0.1s;
 }
 
 /* ─── NAV ─── */
@@ -152,7 +129,7 @@ nav {
 
 nav.scrolled {
     border-bottom-color: var(--border);
-    background: rgba(5,5,7,0.9);
+    background: rgba(5,5,7,0.92);
 }
 
 .nav-logo {
@@ -164,24 +141,21 @@ nav.scrolled {
     letter-spacing: 0.05em;
     display: flex;
     align-items: center;
-    gap: 8px;
-    transition: opacity 0.2s;
+    gap: 10px;
 }
-
-.nav-logo:hover { opacity: 0.8; }
 
 .nav-logo-dot {
     width: 8px;
     height: 8px;
     background: var(--gold);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--gold);
+    box-shadow: 0 0 12px var(--gold);
     animation: pulse-dot 2s ease-in-out infinite;
 }
 
 @keyframes pulse-dot {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.3); opacity: 0.7; }
+    0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 12px var(--gold); }
+    50% { transform: scale(1.4); opacity: 0.6; box-shadow: 0 0 20px var(--gold); }
 }
 
 .nav-logo span { color: var(--text-dim); }
@@ -230,7 +204,6 @@ nav.scrolled {
     display: flex;
     align-items: center;
     gap: 8px;
-    animation: pulse-border 2.5s ease-in-out infinite;
 }
 
 .nav-badge-dot {
@@ -238,13 +211,8 @@ nav.scrolled {
     height: 6px;
     background: var(--green);
     border-radius: 50%;
-    box-shadow: 0 0 8px var(--green);
+    box-shadow: 0 0 10px var(--green);
     animation: pulse-dot 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse-border {
-    0%, 100% { box-shadow: 0 0 0 0 var(--gold-glow); }
-    50% { box-shadow: 0 0 16px 2px var(--gold-glow); }
 }
 
 /* ─── HERO ─── */
@@ -266,7 +234,7 @@ nav.scrolled {
     font-size: clamp(140px, 22vw, 320px);
     font-weight: 900;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(244,195,61,0.04);
+    -webkit-text-stroke: 1px rgba(244,195,61,0.05);
     user-select: none;
     pointer-events: none;
     line-height: 1;
@@ -286,7 +254,7 @@ nav.scrolled {
     align-items: center;
     gap: 14px;
     margin-bottom: 32px;
-    padding: 8px 16px 8px 8px;
+    padding: 8px 18px 8px 8px;
     border: 1px solid var(--border2);
     border-radius: 100px;
     background: var(--bg3);
@@ -297,7 +265,7 @@ nav.scrolled {
     height: 6px;
     background: var(--gold);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--gold);
+    box-shadow: 0 0 12px var(--gold);
     animation: pulse-dot 2s ease-in-out infinite;
 }
 
@@ -344,7 +312,7 @@ nav.scrolled {
     font-weight: 400;
     color: var(--text-dim);
     font-size: 0.55em;
-    margin-top: 8px;
+    margin-top: 12px;
     letter-spacing: -0.02em;
 }
 
@@ -387,11 +355,12 @@ nav.scrolled {
 
 .stat-num {
     font-family: 'Outfit', sans-serif;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: var(--gold);
     line-height: 1;
     letter-spacing: -0.02em;
+    display: inline-block;
 }
 
 .stat-label {
@@ -418,7 +387,7 @@ nav.scrolled {
     text-decoration: none;
     border-radius: 4px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: none;
+    cursor: pointer;
     border: none;
     display: inline-flex;
     align-items: center;
@@ -437,7 +406,7 @@ nav.scrolled {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
     transform: translateX(-100%);
     transition: transform 0.6s;
 }
@@ -445,8 +414,8 @@ nav.scrolled {
 .btn-gold:hover::before { transform: translateX(100%); }
 
 .btn-gold:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px var(--gold-glow-strong);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px var(--gold-glow-strong);
 }
 
 .btn-outline {
@@ -458,16 +427,11 @@ nav.scrolled {
 .btn-outline:hover {
     color: var(--gold);
     box-shadow: inset 0 0 0 1px var(--gold);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
-.btn-arrow {
-    transition: transform 0.3s;
-}
-
-.btn:hover .btn-arrow {
-    transform: translateX(4px);
-}
+.btn-arrow { transition: transform 0.3s; }
+.btn:hover .btn-arrow { transform: translateX(4px); }
 
 /* ─── TERMINAL ─── */
 .terminal {
@@ -478,7 +442,7 @@ nav.scrolled {
     width: 460px;
     background: var(--bg2);
     border: 1px solid var(--border2);
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     box-shadow:
         0 50px 100px rgba(0,0,0,0.7),
@@ -540,16 +504,6 @@ nav.scrolled {
 .t-red { color: var(--red); }
 .t-blue { color: var(--blue); }
 
-.terminal-line {
-    opacity: 0;
-    animation: type-in 0.4s ease forwards;
-}
-
-@keyframes type-in {
-    from { opacity: 0; transform: translateX(-4px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
 .t-cursor {
     display: inline-block;
     width: 8px;
@@ -562,7 +516,6 @@ nav.scrolled {
 
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-/* ─── SCROLL HINT ─── */
 .scroll-hint {
     position: absolute;
     bottom: 30px;
@@ -631,7 +584,7 @@ nav.scrolled {
     color: var(--gold);
     letter-spacing: 0.08em;
     font-weight: 500;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border: 1px solid var(--gold-dim);
     border-radius: 100px;
     background: var(--gold-glow);
@@ -650,6 +603,193 @@ nav.scrolled {
     height: 1px;
     background: linear-gradient(to right, var(--border3), transparent);
     max-width: 280px;
+}
+
+/* ─── KILL CHAIN INTERACTIVE ─── */
+.killchain-wrap {
+    margin-bottom: 80px;
+}
+
+.killchain-intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.killchain-intro p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.killchain-intro b { color: var(--gold); font-weight: 500; }
+
+.killchain {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.killchain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.killchain-stages {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0;
+    position: relative;
+}
+
+.kc-stage {
+    padding: 18px 12px;
+    border: 1px solid var(--border2);
+    background: var(--bg2);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    position: relative;
+    margin-right: -1px;
+}
+
+.kc-stage:first-child { border-radius: 8px 0 0 8px; }
+.kc-stage:last-child { border-radius: 0 8px 8px 0; margin-right: 0; }
+
+.kc-stage::after {
+    content: '→';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold-dim);
+    font-size: 0.8rem;
+    z-index: 2;
+    background: var(--bg3);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.kc-stage:last-child::after { display: none; }
+
+.kc-stage:hover, .kc-stage.active {
+    background: var(--gold-glow);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    z-index: 1;
+}
+
+.kc-stage-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.kc-stage:hover .kc-stage-num,
+.kc-stage.active .kc-stage-num { color: var(--gold); }
+
+.kc-stage-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.kc-stage-mitre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    font-weight: 500;
+}
+
+.kc-detail {
+    margin-top: 24px;
+    padding: 24px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    min-height: 140px;
+}
+
+.kc-detail-left h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.kc-detail-left .mitre-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    background: var(--gold-glow);
+    border: 1px solid var(--gold-dim);
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+    font-weight: 500;
+}
+
+.kc-detail-left p {
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.kc-detail-right h5 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.kc-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.kc-rule {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text);
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.4);
+    border-left: 2px solid var(--gold);
+    border-radius: 3px;
+}
+
+.kc-rule .kc-rule-tag {
+    color: var(--green);
+    font-weight: 600;
 }
 
 /* ─── ABOUT ─── */
@@ -671,8 +811,6 @@ nav.scrolled {
 .about-text p strong {
     color: var(--text);
     font-weight: 500;
-    background: linear-gradient(120deg, transparent 0%, transparent 70%, var(--gold-glow) 70%, var(--gold-glow) 95%, transparent 95%);
-    padding: 0 2px;
 }
 
 .about-cards {
@@ -754,7 +892,6 @@ nav.scrolled {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    cursor: none;
 }
 
 .project-card::before {
@@ -774,9 +911,7 @@ nav.scrolled {
 .project-card:hover {
     transform: translateY(-6px);
     border-color: var(--gold-dim);
-    box-shadow:
-        0 30px 60px rgba(0,0,0,0.5),
-        0 0 40px var(--gold-glow);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px var(--gold-glow);
 }
 
 .project-card.featured {
@@ -952,11 +1087,7 @@ nav.scrolled {
     transition: transform 0.3s;
 }
 
-.skill-block:hover {
-    border-color: var(--gold-dim);
-    transform: translateY(-4px);
-}
-
+.skill-block:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
 .skill-block:hover::after { transform: scaleX(1); }
 
 .skill-block h3 {
@@ -1012,7 +1143,6 @@ nav.scrolled {
     padding: 40px 0;
     border-bottom: 1px solid var(--border);
     position: relative;
-    transition: all 0.3s;
 }
 
 .exp-item:last-child { border-bottom: none; }
@@ -1061,9 +1191,7 @@ nav.scrolled {
     font-weight: 400;
 }
 
-.exp-content {
-    padding-left: 30px;
-}
+.exp-content { padding-left: 30px; }
 
 .exp-content h3 {
     font-family: 'Outfit', sans-serif;
@@ -1202,10 +1330,7 @@ nav.scrolled {
     font-weight: 500;
 }
 
-.contact-link-val {
-    font-size: 0.95rem;
-    font-weight: 500;
-}
+.contact-link-val { font-size: 0.95rem; font-weight: 500; }
 
 .contact-link-arrow {
     color: var(--gold-dim);
@@ -1240,22 +1365,25 @@ footer p {
 
 footer span { color: var(--gold); }
 
-/* ─── REVEAL ─── */
 .reveal {
     opacity: 0;
     transform: translateY(32px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ─── RESPONSIVE ─── */
 @media (max-width: 1100px) {
     .terminal { display: none; }
     .hero { padding: 120px 40px 80px; }
+}
+
+@media (max-width: 1000px) {
+    .killchain-stages { grid-template-columns: repeat(4, 1fr); }
+    .kc-stage { margin-right: 0; }
+    .kc-stage:nth-child(4) { border-radius: 0 8px 0 0; }
+    .kc-stage:nth-child(5) { border-radius: 0 0 0 8px; }
+    .kc-detail { grid-template-columns: 1fr; gap: 20px; }
 }
 
 @media (max-width: 900px) {
@@ -1276,36 +1404,37 @@ footer span { color: var(--gold); }
     .stat::before { display: none; }
     .project-stats { grid-template-columns: repeat(3, 1fr); }
     footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 30px; }
+    .killchain-stages { grid-template-columns: repeat(2, 1fr); }
+    .kc-stage { border-radius: 0 !important; }
 }
 
 @media (max-width: 600px) {
     .hero h1 { font-size: 38px; }
     .skills-layout { grid-template-columns: 1fr; }
     .project-stats { grid-template-columns: repeat(2, 1fr); }
-    .nav-badge span { display: none; }
+    .killchain { padding: 20px; }
+    .killchain-stages { grid-template-columns: 1fr; }
 }
-
-::selection { background: var(--gold-glow-strong); color: var(--gold); }
 </style>
 </head>
 <body>
 
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
+<div class="progress-bar" id="progress"></div>
 <div class="grid-bg"></div>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
 <nav id="nav">
-    <a href="#" class="nav-logo" data-hover>
+    <a href="#" class="nav-logo">
         <span class="nav-logo-dot"></span>
         GD<span>.sec</span>
     </a>
     <ul class="nav-links">
-        <li><a href="#about" data-hover>About</a></li>
-        <li><a href="#projects" data-hover>Projects</a></li>
-        <li><a href="#skills" data-hover>Skills</a></li>
-        <li><a href="#contact" data-hover>Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#killchain">Demo</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-badge">
         <span class="nav-badge-dot"></span>
@@ -1328,14 +1457,14 @@ footer span { color: var(--gold); }
             Third-year cybersecurity student building enterprise-grade detection labs, hunting threats across SIEM environments, and simulating real-world ransomware attack chains from the ground up.
         </p>
         <div class="hero-stats">
-            <div class="stat"><span class="stat-num">9</span><span class="stat-label">VM Lab Envs</span></div>
-            <div class="stat"><span class="stat-num">14</span><span class="stat-label">Suricata Rules</span></div>
-            <div class="stat"><span class="stat-num">235K+</span><span class="stat-label">URLs Classified</span></div>
-            <div class="stat"><span class="stat-num">99%+</span><span class="stat-label">ML Accuracy</span></div>
+            <div class="stat"><span class="stat-num" data-count="9">0</span><span class="stat-label">VM Lab Envs</span></div>
+            <div class="stat"><span class="stat-num" data-count="14">0</span><span class="stat-label">Suricata Rules</span></div>
+            <div class="stat"><span class="stat-num" data-count="235" data-suffix="K+">0</span><span class="stat-label">URLs Classified</span></div>
+            <div class="stat"><span class="stat-num" data-count="99" data-suffix="%+">0</span><span class="stat-label">ML Accuracy</span></div>
         </div>
         <div class="hero-actions">
-            <a href="#projects" class="btn btn-gold" data-hover>View Projects <span class="btn-arrow">→</span></a>
-            <a href="#contact" class="btn btn-outline" data-hover>Get In Touch</a>
+            <a href="#killchain" class="btn btn-gold">Try Live Demo <span class="btn-arrow">→</span></a>
+            <a href="#contact" class="btn btn-outline">Get In Touch</a>
         </div>
     </div>
 
@@ -1349,15 +1478,40 @@ footer span { color: var(--gold); }
         <div class="terminal-body" id="terminal-body"></div>
     </div>
 
-    <div class="scroll-hint">
-        <span>Scroll</span>
+    <div class="scroll-hint"><span>Scroll</span></div>
+</section>
+
+<section class="section" id="killchain">
+    <div class="section-label reveal">
+        <span class="section-label-num">01 / Live Demo</span>
+        <h2>Attack Kill Chain</h2>
+        <div class="section-label-line"></div>
+    </div>
+    <div class="killchain-wrap reveal">
+        <div class="killchain-intro">
+            <p>This is the actual <b>RansomHub attack chain</b> I rebuilt for my SPR600 detection engineering project. Click any phase to see the technique used and the detection rules I wrote to catch it.</p>
+        </div>
+        <div class="killchain">
+            <div class="killchain-stages" id="kc-stages"></div>
+            <div class="kc-detail" id="kc-detail">
+                <div class="kc-detail-left">
+                    <h4 id="kc-title">Phase 1 · Initial Access</h4>
+                    <span class="mitre-badge" id="kc-mitre">T1110.003 — Password Spraying</span>
+                    <p id="kc-desc">Hydra-driven RDP password spray against the Beachhead host using 8 usernames and 10 common passwords. 6 of 80 attempts succeeded, confirming weak password policy.</p>
+                </div>
+                <div class="kc-detail-right">
+                    <h5>Detection Rules Fired</h5>
+                    <div class="kc-rules" id="kc-rules"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <div class="section-full" id="about">
     <div class="section-full-inner">
         <div class="section-label reveal">
-            <span class="section-label-num">01 / About</span>
+            <span class="section-label-num">02 / About</span>
             <h2>Who I Am</h2>
             <div class="section-label-line"></div>
         </div>
@@ -1368,22 +1522,22 @@ footer span { color: var(--gold); }
                 <p>I'm particularly interested in <strong>detection engineering</strong>, <strong>threat intelligence</strong>, and <strong>blue team operations</strong> — understanding how attackers think in order to catch them more effectively.</p>
             </div>
             <div class="about-cards reveal">
-                <div class="about-card" data-tilt>
+                <div class="about-card">
                     <div class="about-card-icon">⚡</div>
                     <h4>Detection Engineering</h4>
                     <p>Suricata rules, Zeek behavioral scripts, Wazuh HIDS, MITRE ATT&CK mapping, multi-layer SIEM correlation.</p>
                 </div>
-                <div class="about-card" data-tilt>
+                <div class="about-card">
                     <div class="about-card-icon">◈</div>
                     <h4>Threat Intelligence</h4>
                     <p>OTX, MISP, Abuse.ch feed integration, IOC management, intelligence-driven hunting.</p>
                 </div>
-                <div class="about-card" data-tilt>
+                <div class="about-card">
                     <div class="about-card-icon">⚔</div>
                     <h4>Offensive Security</h4>
                     <p>Kerberoasting, Golden Ticket, Pass-the-Hash, DCSync — used to improve detection coverage.</p>
                 </div>
-                <div class="about-card" data-tilt>
+                <div class="about-card">
                     <div class="about-card-icon">∑</div>
                     <h4>Data Analysis & ML</h4>
                     <p>Python pipelines, BERT/XGBoost ensembles, SHAP/LIME, Flask APIs, n8n automation.</p>
@@ -1395,13 +1549,13 @@ footer span { color: var(--gold); }
 
 <section class="section" id="projects">
     <div class="section-label reveal">
-        <span class="section-label-num">02 / Projects</span>
+        <span class="section-label-num">03 / Projects</span>
         <h2>Selected Work</h2>
         <div class="section-label-line"></div>
     </div>
     <div class="projects-grid">
 
-        <div class="project-card featured reveal" data-tilt>
+        <div class="project-card featured reveal">
             <div>
                 <div class="project-tag">★ Featured · SPR600</div>
                 <h3>RansomHub Threat Hunting Simulation</h3>
@@ -1429,7 +1583,7 @@ footer span { color: var(--gold); }
             </div>
         </div>
 
-        <div class="project-card reveal" data-tilt>
+        <div class="project-card reveal">
             <div class="project-tag">Blue Team</div>
             <h3>SIEM Implementation & Log Analysis</h3>
             <p>Deployed enterprise SIEM with ELK Stack and Splunk for centralized threat detection and log correlation.</p>
@@ -1444,7 +1598,7 @@ footer span { color: var(--gold); }
             </div>
         </div>
 
-        <div class="project-card reveal" data-tilt>
+        <div class="project-card reveal">
             <div class="project-tag">ML / Data Science</div>
             <h3>Phishing URL Detection — ML Pipeline</h3>
             <p>Built end-to-end ML pipeline achieving 99%+ accuracy on 235,000+ URLs with full explainability stack.</p>
@@ -1459,7 +1613,7 @@ footer span { color: var(--gold); }
             </div>
         </div>
 
-        <div class="project-card reveal" data-tilt>
+        <div class="project-card reveal">
             <div class="project-tag">Red Team · Infrastructure</div>
             <h3>Active Directory Penetration Testing Lab</h3>
             <p>Full enterprise AD environment for attack simulation and detection validation.</p>
@@ -1474,7 +1628,7 @@ footer span { color: var(--gold); }
             </div>
         </div>
 
-        <div class="project-card reveal" data-tilt>
+        <div class="project-card reveal">
             <div class="project-tag">Network Security</div>
             <h3>Network Security Lab — IDS/WAF</h3>
             <p>4-VM security lab for attack detection and prevention across web application attack vectors.</p>
@@ -1488,7 +1642,7 @@ footer span { color: var(--gold); }
             </div>
         </div>
 
-        <div class="project-card reveal" data-tilt>
+        <div class="project-card reveal">
             <div class="project-tag">Infrastructure · PKI</div>
             <h3>PKI Infrastructure & Certificate Authority</h3>
             <p>Complete PKI chain from Root CA through Intermediate CA with revocation infrastructure.</p>
@@ -1508,64 +1662,46 @@ footer span { color: var(--gold); }
 <div class="section-full" id="skills">
     <div class="section-full-inner">
         <div class="section-label reveal">
-            <span class="section-label-num">03 / Skills</span>
+            <span class="section-label-num">04 / Skills</span>
             <h2>Tooling & Stack</h2>
             <div class="section-label-line"></div>
         </div>
         <div class="skills-layout">
             <div class="skill-block reveal">
                 <h3>Detection & Response</h3>
-                <div class="skill-list">
-                    <span>Suricata</span><span>Zeek</span><span>Wazuh HIDS</span><span>Snort IDS</span><span>SIEM Correlation</span><span>MITRE ATT&CK</span><span>IOC Analysis</span><span>Threat Hunting</span>
-                </div>
+                <div class="skill-list"><span>Suricata</span><span>Zeek</span><span>Wazuh HIDS</span><span>Snort IDS</span><span>SIEM Correlation</span><span>MITRE ATT&CK</span><span>IOC Analysis</span><span>Threat Hunting</span></div>
             </div>
             <div class="skill-block reveal">
                 <h3>SIEM & Log Analysis</h3>
-                <div class="skill-list">
-                    <span>Splunk</span><span>Elasticsearch</span><span>Logstash</span><span>Kibana</span><span>Filebeat</span><span>Sysmon</span><span>Log Correlation</span><span>Anomaly Detection</span>
-                </div>
+                <div class="skill-list"><span>Splunk</span><span>Elasticsearch</span><span>Logstash</span><span>Kibana</span><span>Filebeat</span><span>Sysmon</span><span>Log Correlation</span><span>Anomaly Detection</span></div>
             </div>
             <div class="skill-block reveal">
                 <h3>Threat Intelligence</h3>
-                <div class="skill-list">
-                    <span>AlienVault OTX</span><span>MISP</span><span>Abuse.ch</span><span>VirusTotal</span><span>Feed Integration</span><span>IOC Management</span>
-                </div>
+                <div class="skill-list"><span>AlienVault OTX</span><span>MISP</span><span>Abuse.ch</span><span>VirusTotal</span><span>Feed Integration</span><span>IOC Management</span></div>
             </div>
             <div class="skill-block reveal">
                 <h3>Offensive Security</h3>
-                <div class="skill-list">
-                    <span>Metasploit</span><span>Burp Suite</span><span>Mimikatz</span><span>Impacket</span><span>Hashcat</span><span>Nmap</span><span>Wireshark</span>
-                </div>
+                <div class="skill-list"><span>Metasploit</span><span>Burp Suite</span><span>Mimikatz</span><span>Impacket</span><span>Hashcat</span><span>Nmap</span><span>Wireshark</span></div>
             </div>
             <div class="skill-block reveal">
                 <h3>Networking & Infrastructure</h3>
-                <div class="skill-list">
-                    <span>pfSense</span><span>VLAN</span><span>OpenVPN</span><span>DNS/DHCP</span><span>PCAP Analysis</span><span>IDS/IPS</span><span>PKI</span><span>SSL/TLS</span>
-                </div>
+                <div class="skill-list"><span>pfSense</span><span>VLAN</span><span>OpenVPN</span><span>DNS/DHCP</span><span>PCAP Analysis</span><span>IDS/IPS</span><span>PKI</span><span>SSL/TLS</span></div>
             </div>
             <div class="skill-block reveal">
                 <h3>Programming & Automation</h3>
-                <div class="skill-list">
-                    <span>Python</span><span>Bash</span><span>Flask API</span><span>n8n</span><span>REST APIs</span><span>PyTorch</span><span>scikit-learn</span><span>SHAP/LIME</span>
-                </div>
+                <div class="skill-list"><span>Python</span><span>Bash</span><span>Flask API</span><span>n8n</span><span>REST APIs</span><span>PyTorch</span><span>scikit-learn</span><span>SHAP/LIME</span></div>
             </div>
             <div class="skill-block reveal">
                 <h3>Active Directory</h3>
-                <div class="skill-list">
-                    <span>Domain Controllers</span><span>Group Policy</span><span>Kerberos</span><span>DNS/DHCP</span><span>User Management</span>
-                </div>
+                <div class="skill-list"><span>Domain Controllers</span><span>Group Policy</span><span>Kerberos</span><span>DNS/DHCP</span><span>User Management</span></div>
             </div>
             <div class="skill-block reveal">
                 <h3>Operating Systems</h3>
-                <div class="skill-list">
-                    <span>Kali Linux</span><span>Ubuntu</span><span>Windows Server 2019</span><span>Windows Server 2022</span><span>Windows 10/11</span>
-                </div>
+                <div class="skill-list"><span>Kali Linux</span><span>Ubuntu</span><span>Windows Server 2019</span><span>Windows Server 2022</span><span>Windows 10/11</span></div>
             </div>
             <div class="skill-block reveal">
                 <h3>Virtualization & Tools</h3>
-                <div class="skill-list">
-                    <span>VMware</span><span>VirtualBox</span><span>ModSecurity WAF</span><span>OWASP CRS</span><span>OpenSSL</span><span>Microsoft Excel</span>
-                </div>
+                <div class="skill-list"><span>VMware</span><span>VirtualBox</span><span>ModSecurity WAF</span><span>OWASP CRS</span><span>OpenSSL</span><span>Microsoft Excel</span></div>
             </div>
         </div>
     </div>
@@ -1573,7 +1709,7 @@ footer span { color: var(--gold); }
 
 <section class="section" id="experience">
     <div class="section-label reveal">
-        <span class="section-label-num">04 / Experience</span>
+        <span class="section-label-num">05 / Experience</span>
         <h2>Career Path</h2>
         <div class="section-label-line"></div>
     </div>
@@ -1604,7 +1740,7 @@ footer span { color: var(--gold); }
 <div class="section-full" id="contact">
     <div class="section-full-inner">
         <div class="section-label reveal">
-            <span class="section-label-num">05 / Contact</span>
+            <span class="section-label-num">06 / Contact</span>
             <h2>Get In Touch</h2>
             <div class="section-label-line"></div>
         </div>
@@ -1618,7 +1754,7 @@ footer span { color: var(--gold); }
                 </div>
             </div>
             <div class="contact-links reveal">
-                <a href="mailto:gdeol14@myseneca.ca" class="contact-link" data-hover>
+                <a href="mailto:gdeol14@myseneca.ca" class="contact-link">
                     <div class="contact-link-left">
                         <div class="contact-link-icon">@</div>
                         <div class="contact-link-info">
@@ -1628,7 +1764,7 @@ footer span { color: var(--gold); }
                     </div>
                     <span class="contact-link-arrow">→</span>
                 </a>
-                <a href="https://www.linkedin.com/in/gurmandeep-deol-224604309/" target="_blank" class="contact-link" data-hover>
+                <a href="https://www.linkedin.com/in/gurmandeep-deol-224604309/" target="_blank" class="contact-link">
                     <div class="contact-link-left">
                         <div class="contact-link-icon">in</div>
                         <div class="contact-link-info">
@@ -1638,7 +1774,7 @@ footer span { color: var(--gold); }
                     </div>
                     <span class="contact-link-arrow">→</span>
                 </a>
-                <a href="https://github.com/gdeol14" target="_blank" class="contact-link" data-hover>
+                <a href="https://github.com/gdeol14" target="_blank" class="contact-link">
                     <div class="contact-link-left">
                         <div class="contact-link-icon">{}</div>
                         <div class="contact-link-info">
@@ -1659,41 +1795,15 @@ footer span { color: var(--gold); }
 </footer>
 
 <script>
-// ─── CUSTOM CURSOR ───
-const cursor = document.querySelector('.cursor');
-const cursorRing = document.querySelector('.cursor-ring');
-
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
+// ─── PROGRESS BAR ───
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+    const max = document.body.scrollHeight - window.innerHeight;
+    const pct = (window.scrollY / max) * 100;
+    progress.style.width = pct + '%';
 });
 
-function animateRing() {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-}
-animateRing();
-
-document.querySelectorAll('[data-hover], a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover');
-        cursorRing.classList.add('hover');
-    });
-    el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover');
-        cursorRing.classList.remove('hover');
-    });
-});
-
-// ─── NAV SCROLL EFFECT ───
+// ─── NAV SCROLL ───
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) nav.classList.add('scrolled');
@@ -1705,13 +1815,13 @@ const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add('visible'), i * 100);
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
         }
     });
 }, { threshold: 0.1 });
 reveals.forEach(el => observer.observe(el));
 
-// ─── HERO ANIMATIONS ───
+// ─── HERO INTRO ───
 document.querySelectorAll('.hero-inner > *').forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(24px)';
@@ -1722,9 +1832,44 @@ document.querySelectorAll('.hero-inner > *').forEach((el, i) => {
     }, 100);
 });
 
-// ─── ANIMATED TERMINAL ───
+// ─── COUNT UP STATS ───
+const counters = document.querySelectorAll('[data-count]');
+let countersStarted = false;
+
+function animateCounter(el) {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+
+    function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(target * eased);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(update);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !countersStarted) {
+            countersStarted = true;
+            counters.forEach((c, i) => {
+                setTimeout(() => animateCounter(c), i * 150);
+            });
+        }
+    });
+}, { threshold: 0.5 });
+
+counters.forEach(c => statObserver.observe(c));
+
+// ─── TERMINAL TYPING ANIMATION ───
 const terminalLines = [
-    { type: 'cmd', prompt: '❯ ', text: './run_hunt.sh --target ransomhub' },
+    { type: 'cmd', text: './run_hunt.sh --target ransomhub' },
     { type: 'out', text: '[*] Initializing 9-VM lab environment...' },
     { type: 'out', text: '[*] Loading DFIR Report IOCs...' },
     { type: 'green', text: '[✓] Suricata IDS: 14 rules loaded' },
@@ -1740,40 +1885,192 @@ const terminalLines = [
 
 const terminalBody = document.getElementById('terminal-body');
 
-function renderTerminal() {
-    terminalBody.innerHTML = '';
-    terminalLines.forEach((line, i) => {
-        const div = document.createElement('div');
-        div.className = 'terminal-line';
-        div.style.animationDelay = (i * 0.4) + 's';
-        if (line.type === 'cmd') {
-            div.innerHTML = `<span class="t-prompt">${line.prompt}</span><span class="t-cmd">${line.text}</span>`;
-        } else {
-            div.innerHTML = `<span class="t-${line.type}">${line.text}</span>`;
+async function typeLine(line, container) {
+    const div = document.createElement('div');
+    container.appendChild(div);
+
+    if (line.type === 'cmd') {
+        const prompt = document.createElement('span');
+        prompt.className = 't-prompt';
+        prompt.textContent = '❯ ';
+        div.appendChild(prompt);
+
+        const cmd = document.createElement('span');
+        cmd.className = 't-cmd';
+        div.appendChild(cmd);
+
+        for (let i = 0; i < line.text.length; i++) {
+            cmd.textContent += line.text[i];
+            await sleep(30);
         }
-        terminalBody.appendChild(div);
-    });
-    const finalCursor = document.createElement('div');
-    finalCursor.className = 'terminal-line';
-    finalCursor.style.animationDelay = (terminalLines.length * 0.4) + 's';
-    finalCursor.innerHTML = `<span class="t-prompt">❯ </span><span class="t-cursor"></span>`;
-    terminalBody.appendChild(finalCursor);
+    } else {
+        const span = document.createElement('span');
+        span.className = `t-${line.type}`;
+        span.textContent = line.text;
+        div.appendChild(span);
+    }
 }
 
-renderTerminal();
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-// Re-render terminal every 30s for "live" effect
-setInterval(() => {
-    terminalBody.style.opacity = '0';
+async function runTerminal() {
+    terminalBody.innerHTML = '';
+    for (let i = 0; i < terminalLines.length; i++) {
+        await typeLine(terminalLines[i], terminalBody);
+        await sleep(terminalLines[i].type === 'cmd' ? 400 : 250);
+    }
+    const finalLine = document.createElement('div');
+    finalLine.innerHTML = `<span class="t-prompt">❯ </span><span class="t-cursor"></span>`;
+    terminalBody.appendChild(finalLine);
+}
+
+setTimeout(runTerminal, 600);
+setInterval(runTerminal, 45000);
+
+// ─── KILL CHAIN INTERACTIVE ───
+const killchainData = [
+    {
+        title: 'Initial Access',
+        short: 'RDP Password Spray',
+        mitre: 'T1110.003',
+        mitreFull: 'T1110.003 — Password Spraying',
+        desc: 'Hydra-driven RDP password spray against the Beachhead host using 8 usernames and 10 common passwords. 6 of 80 attempts succeeded, confirming weak password policy.',
+        rules: [
+            { tag: 'Suricata 2000001', text: 'RDP brute force — 5 attempts in 60s' },
+            { tag: 'Zeek RDP_Brute_Force', text: 'Connection count threshold exceeded' },
+            { tag: 'Wazuh 100001', text: 'Windows Event 4625 — failed RDP logons' }
+        ]
+    },
+    {
+        title: 'Discovery',
+        short: 'Domain Enumeration',
+        mitre: 'T1087.002',
+        mitreFull: 'T1087.002 — Account Discovery',
+        desc: 'After foothold via RDP as jsmith, executed net user /domain, net group "Domain Admins" /domain, nltest /dclist:lab.local to map the domain.',
+        rules: [
+            { tag: 'Wazuh 100006', text: 'net.exe /domain command line match' },
+            { tag: 'Wazuh 100007', text: 'nltest /dclist domain trust discovery' }
+        ]
+    },
+    {
+        title: 'Cred Access',
+        short: 'Mimikatz LSASS',
+        mitre: 'T1003.001',
+        mitreFull: 'T1003.001 — LSASS Memory',
+        desc: 'Downloaded Mimikatz from attacker HTTP server, ran sekurlsa::logonpasswords to extract domainadmin NTLM hash. Hash enables pass-the-hash without plaintext.',
+        rules: [
+            { tag: 'Suricata 2000020', text: 'HTTP URI contains "mimikatz"' },
+            { tag: 'Wazuh 100004', text: 'Sysmon Event 1 — mimikatz.exe originalFileName' }
+        ]
+    },
+    {
+        title: 'DCSync',
+        short: 'AD Replication',
+        mitre: 'T1003.006',
+        mitreFull: 'T1003.006 — DCSync',
+        desc: 'From Kali, impacket-secretsdump performed DCSync against DC01 via DRSUAPI replication, extracting all domain hashes including krbtgt for Golden Ticket capability.',
+        rules: [
+            { tag: 'Suricata DRSUAPI', text: 'Non-DC source IP performing replication' },
+            { tag: 'MITRE Map', text: 'T1003.006 detected on host layer' }
+        ]
+    },
+    {
+        title: 'Lateral Move',
+        short: 'Pass-the-Hash RDP',
+        mitre: 'T1021.001',
+        mitreFull: 'T1021.001 — Remote Desktop Protocol',
+        desc: 'Used stolen NTLM hash with xfreerdp3 /pth to authenticate to DC01, FileServer, Server02 — never needed plaintext password. Got interactive desktop on DC.',
+        rules: [
+            { tag: 'Suricata 2000006', text: '2nd unique RDP destination from same source' },
+            { tag: 'Zeek Internal_RDP_Lateral', text: 'Stateful tracking across 3 hosts' }
+        ]
+    },
+    {
+        title: 'Exfiltration',
+        short: 'Rclone SFTP / 443',
+        mitre: 'T1048',
+        mitreFull: 'T1048 — Exfil Over Alt Protocol',
+        desc: 'Rclone disguised in C:\\ProgramData\\Veeam\\ exfiltrated 2.03 GB via SFTP on port 443 — blending with HTTPS but actually SSH. Detection on banner inspection.',
+        rules: [
+            { tag: 'Suricata 2000007', text: 'SSH banner "SSH-" on port 443' },
+            { tag: 'Zeek SFTP_On_443', text: 'ssh_client_version event on 443' }
+        ]
+    },
+    {
+        title: 'Persistence',
+        short: 'RMM Tools',
+        mitre: 'T1219',
+        mitreFull: 'T1219 — Remote Access Software',
+        desc: 'Attacker installed Atera and Splashtop RMM tools for persistent access — legitimate software, detected via TLS SNI inspection of outbound connections.',
+        rules: [
+            { tag: 'Suricata 2000009', text: 'TLS SNI match: atera.com' },
+            { tag: 'Suricata 2000010', text: 'TLS SNI match: splashtop.com' }
+        ]
+    },
+    {
+        title: 'Impact',
+        short: 'RansomHub Deploy',
+        mitre: 'T1486',
+        mitreFull: 'T1486 — Data Encrypted for Impact',
+        desc: 'Final stage: vssadmin shadow copy deletion, wevtutil log clearing, file encryption with .ransomhub extension, README_RANSOMHUB.txt drops, SMB spread.',
+        rules: [
+            { tag: 'Wazuh 100013', text: 'vssadmin Delete Shadows /all' },
+            { tag: 'Wazuh 100015', text: 'wevtutil cl security/system/application' },
+            { tag: 'Wazuh 100019', text: '.ransomhub file extension rename' },
+            { tag: 'Wazuh 100020', text: 'README_RANSOMHUB.txt creation' }
+        ]
+    }
+];
+
+const kcStages = document.getElementById('kc-stages');
+const kcTitle = document.getElementById('kc-title');
+const kcMitre = document.getElementById('kc-mitre');
+const kcDesc = document.getElementById('kc-desc');
+const kcRules = document.getElementById('kc-rules');
+
+killchainData.forEach((stage, i) => {
+    const div = document.createElement('div');
+    div.className = 'kc-stage' + (i === 0 ? ' active' : '');
+    div.dataset.idx = i;
+    div.innerHTML = `
+        <div class="kc-stage-num">PHASE 0${i + 1}</div>
+        <div class="kc-stage-title">${stage.short}</div>
+        <div class="kc-stage-mitre">${stage.mitre}</div>
+    `;
+    div.addEventListener('click', () => selectStage(i));
+    div.addEventListener('mouseenter', () => selectStage(i));
+    kcStages.appendChild(div);
+});
+
+function selectStage(i) {
+    document.querySelectorAll('.kc-stage').forEach(s => s.classList.remove('active'));
+    document.querySelector(`.kc-stage[data-idx="${i}"]`).classList.add('active');
+
+    const stage = killchainData[i];
+    kcTitle.style.opacity = '0';
+    kcMitre.style.opacity = '0';
+    kcDesc.style.opacity = '0';
+    kcRules.style.opacity = '0';
+
     setTimeout(() => {
-        renderTerminal();
-        terminalBody.style.opacity = '1';
-    }, 300);
-}, 30000);
+        kcTitle.textContent = `Phase 0${i + 1} · ${stage.title}`;
+        kcMitre.textContent = stage.mitreFull;
+        kcDesc.textContent = stage.desc;
+        kcRules.innerHTML = stage.rules.map(r =>
+            `<div class="kc-rule"><span class="kc-rule-tag">${r.tag}</span> · ${r.text}</div>`
+        ).join('');
 
-terminalBody.style.transition = 'opacity 0.3s';
+        kcTitle.style.transition = kcMitre.style.transition = kcDesc.style.transition = kcRules.style.transition = 'opacity 0.3s';
+        kcTitle.style.opacity = '1';
+        kcMitre.style.opacity = '1';
+        kcDesc.style.opacity = '1';
+        kcRules.style.opacity = '1';
+    }, 150);
+}
 
-// ─── SPOTLIGHT EFFECT ON CARDS ───
+selectStage(0);
+
+// ─── CARD SPOTLIGHT ───
 document.querySelectorAll('.about-card, .project-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -1784,14 +2081,13 @@ document.querySelectorAll('.about-card, .project-card').forEach(card => {
     });
 });
 
-// ─── PARALLAX BG TEXT ───
+// ─── PARALLAX ───
 const bgText = document.querySelector('.hero-bg-text');
 window.addEventListener('scroll', () => {
     const scroll = window.scrollY;
     if (bgText) bgText.style.transform = `translateY(calc(-50% + ${scroll * 0.3}px))`;
 });
 
-// ─── ORB PARALLAX ───
 const orbs = document.querySelectorAll('.orb');
 document.addEventListener('mousemove', (e) => {
     const x = (e.clientX / window.innerWidth - 0.5) * 30;
