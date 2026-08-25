@@ -323,11 +323,11 @@ footer span{color:var(--gold)}
         <div class="project-card featured reveal" style="border-color:var(--gold);box-shadow:0 0 60px var(--gold-glow)">
             <div>
                 <div class="project-tag" style="background:var(--gold);color:var(--bg);border-color:var(--gold)">&starf; Credited Security Research &middot; WAS705</div>
-                <h3>BookStack Vulnerability Research &mdash; 3 Credited HIGH Severity Findings</h3>
-                <p class="project-desc">Independently discovered and responsibly disclosed three HIGH severity vulnerabilities in BookStack, an open-source documentation platform with 18K+ GitHub stars. Credited by name in all three official security releases by the maintainer. Each finding bypassed the patch written for the previous one &mdash; demonstrating a deep understanding of HTMLPurifier sanitizer internals and the fundamental fragility of blocklist-based content filtering.</p>
+                <h3>BookStack Vulnerability Research &mdash; 3 Credited Findings Across 3 Releases</h3>
+                <p class="project-desc">Independently discovered and responsibly disclosed three separate vulnerabilities in BookStack, an open-source documentation platform with 18K+ GitHub stars. Credited by name in three consecutive official security releases (v26.05.1, v26.05.2, v26.05.3) by the maintainer. Each finding bypassed the patch written for the previous one &mdash; the first two by attacking a different HTML attribute the patch didn't cover, the third by moving from content injection to export-time rendering. All three exploit the same underlying primitive (file:// / NTLM credential theft on Windows) through different vectors.</p>
                 <div class="project-stats" style="grid-template-columns:repeat(4,1fr)">
                     <div class="p-stat"><span class="p-stat-num">3</span><span class="p-stat-label">Credited Findings</span></div>
-                    <div class="p-stat"><span class="p-stat-num">7.1</span><span class="p-stat-label">CVSS Score</span></div>
+                    <div class="p-stat"><span class="p-stat-num">7.1</span><span class="p-stat-label">CVSS (v26.05.2)</span></div>
                     <div class="p-stat"><span class="p-stat-num">18K+</span><span class="p-stat-label">GitHub Stars</span></div>
                     <div class="p-stat"><span class="p-stat-num">3</span><span class="p-stat-label">Patches Released</span></div>
                 </div>
@@ -335,16 +335,17 @@ footer span{color:var(--gold)}
             </div>
             <div>
                 <ul class="project-bullets">
-                    <li>Finding 1 (v26.05.1): file:// protocol injection in content attributes enabling NTLM credential theft on Windows</li>
-                    <li>Finding 2 (v26.05.2): file:// protocol bypass via srcset attribute &mdash; not covered by the v26.05.1 patch due to HTMLPurifier treating srcset as a "URI candidate list"</li>
-                    <li>Finding 3 (v26.05.2): protocol-relative URL bypass (//attacker) in srcset &mdash; slips past str_contains() blocklist. Three vectors: credential phishing, silent SMB hash theft, session cookie leakage</li>
+                    <li>Finding 1 (v26.05.1): file:// protocol injection in content attributes enabling NTLM credential theft on Windows &mdash; original vector</li>
+                    <li>Finding 2 (v26.05.2): file:// protocol bypass via the srcset attribute &mdash; not covered by the v26.05.1 patch because HTMLPurifier treats srcset as a "URI candidate list" rather than a single URI. Also identified a protocol-relative URL bypass (//attacker) that slipped past str_contains() blocklist checks</li>
+                    <li>Finding 3 (v26.05.3): interactive file link loading at export time &mdash; moves the attack surface from content sanitization to the export renderer, where certain editor content can trigger NTLM-relevant behaviour in Windows environments after export</li>
                     <li>All three confirmed via Burp Suite Pro, Responder (NTLMv2 capture), and source code review of SrcsetAttrDef.php and ExportFormatter.php</li>
-                    <li>Responsible disclosure to the maintainer &mdash; credited by name in all three official security release blog posts</li>
+                    <li>Responsible disclosure to the maintainer &mdash; credited by name in v26.05.1, v26.05.2, and v26.05.3 official security release blog posts</li>
                     <li>Paired with a STRIDE threat model of the platform and 71 WSTG test cases across 12 security domains</li>
                 </ul>
                 <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
                     <a href="https://www.bookstackapp.com/blog/bookstack-release-v26-05-1/" target="_blank" rel="noopener" class="btn btn-outline" style="padding:10px 18px;font-size:.65rem">v26.05.1 Credit &rarr;</a>
                     <a href="https://www.bookstackapp.com/blog/bookstack-release-v26-05-2/" target="_blank" rel="noopener" class="btn btn-outline" style="padding:10px 18px;font-size:.65rem">v26.05.2 Credit &rarr;</a>
+                    <a href="https://www.bookstackapp.com/blog/bookstack-release-v26-05-3/" target="_blank" rel="noopener" class="btn btn-outline" style="padding:10px 18px;font-size:.65rem">v26.05.3 Credit &rarr;</a>
                 </div>
             </div>
         </div>
