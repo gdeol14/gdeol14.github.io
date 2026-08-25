@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gurmandeep Deol — Cybersecurity Engineer & Security Researcher</title>
-<meta name="description" content="Cybersecurity student with 3 credited HIGH severity vulnerability discoveries in BookStack (18K+ GitHub stars). Detection engineering, threat hunting, vulnerability research.">
+<title>Gurmandeep Deol — Detection Engineer & Security Researcher</title>
+<meta name="description" content="Third-year cybersecurity student. Three credited HIGH severity vulnerability discoveries in BookStack (18K+ GitHub stars). Detection engineering, threat hunting, digital forensics.">
 <meta name="author" content="Gurmandeep Deol">
-<meta property="og:title" content="Gurmandeep Deol — Cybersecurity Engineer">
-<meta property="og:description" content="3 credited HIGH severity findings in production open-source software. Detection engineering, STRIDE threat modeling, responsible disclosure.">
+<meta property="og:title" content="Gurmandeep Deol — Detection Engineer & Security Researcher">
+<meta property="og:description" content="Three credited HIGH severity findings in production open-source software. Full RansomHub kill chain rebuilt with detection coverage across every stage.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#f4c33d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,18 +18,10 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-
-/* Skip nav for accessibility */
 .skip-nav{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);padding:12px 24px;border-radius:0 0 8px 8px;font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600;z-index:999;text-decoration:none;transition:top .3s}
 .skip-nav:focus{top:0}
-
-/* Focus styles for keyboard nav */
 *:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
-
-/* Reduced motion */
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.orb,.grid-bg{display:none!important}.cursor-glow{display:none!important}}
-
-/* Texture & atmosphere */
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");opacity:.5}
 .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(244,195,61,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(244,195,61,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 0%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,black 0%,transparent 75%)}
 .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0;opacity:.4;will-change:transform}
@@ -37,14 +29,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(96,165,250,.2) 0%,transparent 70%);bottom:10%;right:-150px;animation:drift2 30s ease-in-out infinite}
 @keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,100px)}}
 @keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,-60px)}}
-
-/* Cursor glow */
 .cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(244,195,61,.06) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);will-change:left,top;transition:left .15s ease-out,top .15s ease-out}
-
-/* Progress bar */
 .progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--gold),var(--gold2));z-index:200;width:0%;box-shadow:0 0 12px var(--gold);transition:width .1s}
-
-/* Nav */
 nav{position:fixed;top:0;width:100%;z-index:100;padding:0 60px;height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;background:rgba(5,5,7,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:border-color .3s,background .3s}
 nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .nav-logo{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:600;color:var(--gold);text-decoration:none;letter-spacing:.05em;display:flex;align-items:center;gap:10px}
@@ -58,21 +44,15 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .nav-links a:hover::before,.nav-links a:focus-visible::before{width:100%}
 .nav-badge{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold);border:1px solid var(--gold-dim);padding:6px 14px;border-radius:100px;background:var(--gold-glow);font-weight:500;display:flex;align-items:center;gap:8px}
 .nav-badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green);animation:pulse-dot 1.5s ease-in-out infinite}
-
-/* Mobile hamburger */
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--text-dim);border-radius:2px;transition:all .3s}
 .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-
-/* Mobile nav overlay */
 .mobile-nav{position:fixed;inset:0;background:rgba(5,5,7,.97);z-index:99;display:none;flex-direction:column;align-items:center;justify-content:center;gap:32px}
 .mobile-nav.open{display:flex}
 .mobile-nav a{font-family:'Outfit',sans-serif;font-size:1.8rem;color:var(--text);text-decoration:none;font-weight:600;transition:color .2s}
 .mobile-nav a:hover{color:var(--gold)}
-
-/* Hero */
 .hero{min-height:100vh;min-height:100dvh;display:flex;align-items:center;padding:120px 60px 80px;position:relative;overflow:hidden}
 .hero-bg-text{position:absolute;right:-50px;top:50%;transform:translateY(-50%);font-family:'Outfit',sans-serif;font-size:clamp(140px,22vw,320px);font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(244,195,61,.05);user-select:none;pointer-events:none;line-height:1;white-space:nowrap;letter-spacing:-.05em;z-index:0}
 .hero-inner{max-width:820px;position:relative;z-index:2}
@@ -102,8 +82,6 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .btn-outline:hover,.btn-outline:focus-visible{color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);transform:translateY(-3px)}
 .btn-arrow{transition:transform .3s}
 .btn:hover .btn-arrow{transform:translateX(4px)}
-
-/* Terminal */
 .terminal{position:absolute;right:60px;top:50%;transform:translateY(-50%);width:460px;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;overflow:hidden;box-shadow:0 50px 100px rgba(0,0,0,.7),0 0 60px var(--gold-glow),inset 0 1px 0 rgba(255,255,255,.04);z-index:2}
 .terminal-bar{padding:14px 18px;background:var(--bg3);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
 .terminal-dot{width:12px;height:12px;border-radius:50%;transition:transform .2s}
@@ -117,14 +95,10 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .t-prompt{color:var(--gold)}.t-cmd{color:var(--text)}.t-out{color:var(--text-dim)}.t-green{color:var(--green)}.t-red{color:var(--red)}.t-blue{color:var(--blue)}
 .t-cursor{display:inline-block;width:8px;height:14px;background:var(--gold);animation:blink 1s step-end infinite;vertical-align:middle;margin-left:4px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
-/* Scroll hint */
 .scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;animation:float 3s ease-in-out infinite}
 .scroll-hint span{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text-faint);letter-spacing:.15em;text-transform:uppercase}
 .scroll-hint::after{content:'';width:1px;height:30px;background:linear-gradient(to bottom,var(--gold),transparent)}
 @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
-
-/* Sections */
 .section{padding:120px 60px;max-width:1320px;margin:0 auto;position:relative;z-index:1}
 .section-full{padding:120px 60px;border-top:1px solid var(--border);background:var(--bg2);position:relative;z-index:1}
 .section-full-inner{max-width:1320px;margin:0 auto}
@@ -132,8 +106,6 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .section-label-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold);letter-spacing:.08em;font-weight:500;padding:6px 14px;border:1px solid var(--gold-dim);border-radius:100px;background:var(--gold-glow)}
 .section-label h2{font-family:'Outfit',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;letter-spacing:-.03em;color:var(--text)}
 .section-label-line{flex:1;height:1px;background:linear-gradient(to right,var(--border3),transparent);max-width:280px}
-
-/* Kill chain */
 .killchain-wrap{margin-bottom:80px}
 .killchain-intro{text-align:center;margin-bottom:40px}
 .killchain-intro p{color:var(--text-dim);font-size:1rem;max-width:640px;margin:0 auto;line-height:1.7;font-weight:300}
@@ -159,8 +131,6 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .kc-rules{display:flex;flex-direction:column;gap:8px}
 .kc-rule{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text);padding:8px 12px;background:rgba(0,0,0,.4);border-left:2px solid var(--gold);border-radius:3px}
 .kc-rule .kc-rule-tag{color:var(--green);font-weight:600}
-
-/* About */
 .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
 .about-text p{color:var(--text-dim);font-size:1.05rem;line-height:1.85;margin-bottom:24px;font-weight:300}
 .about-text p strong{color:var(--text);font-weight:500}
@@ -172,8 +142,18 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .about-card-icon{width:36px;height:36px;border-radius:6px;background:var(--gold-glow);border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.1rem;color:var(--gold)}
 .about-card h4{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-.01em}
 .about-card p{font-size:.85rem;color:var(--text-dim);line-height:1.6;font-weight:300}
-
-/* Projects */
+.about-card a{color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold-dim);transition:border-color .2s}
+.about-card a:hover{border-bottom-color:var(--gold)}
+.cert-block{margin-top:32px;padding:28px;border:1px solid var(--gold-dim);border-radius:10px;background:linear-gradient(135deg,var(--bg3) 0%,rgba(244,195,61,.06) 100%);position:relative;overflow:hidden}
+.cert-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.cert-block h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+.cert-block h4::before{content:'\2713';color:var(--gold);font-size:.9rem;font-weight:700}
+.cert-item{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px}
+.cert-name{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:4px;letter-spacing:-.01em}
+.cert-issuer{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim)}
+.cert-issuer b{color:var(--gold);font-weight:500}
+.cert-verify{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold);text-decoration:none;padding:8px 14px;border:1px solid var(--gold-dim);border-radius:100px;background:var(--gold-glow);transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.cert-verify:hover{background:var(--gold);color:var(--bg);transform:translateY(-2px)}
 .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .project-card{background:var(--bg3);padding:36px;border-radius:10px;border:1px solid var(--border2);transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .project-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(244,195,61,.08),transparent 40%);opacity:0;transition:opacity .3s;pointer-events:none;z-index:0}
@@ -197,8 +177,6 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .tech-stack{display:flex;flex-wrap:wrap;gap:8px}
 .tech-stack span{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:5px 11px;border:1px solid var(--border2);border-radius:100px;color:var(--text-dim);transition:all .2s;font-weight:500}
 .tech-stack span:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-glow);transform:translateY(-1px)}
-
-/* Skills */
 .skills-layout{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .skill-block{background:var(--bg3);padding:28px;border-radius:8px;border:1px solid var(--border2);transition:all .3s;position:relative;overflow:hidden}
 .skill-block::after{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .3s}
@@ -209,8 +187,6 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .skill-list{display:flex;flex-wrap:wrap;gap:8px}
 .skill-list span{font-size:.82rem;color:var(--text-dim);padding:6px 12px;background:rgba(0,0,0,.3);border-radius:100px;border:1px solid var(--border);transition:all .2s;font-weight:400}
 .skill-list span:hover{color:var(--gold);border-color:var(--gold-dim);transform:translateY(-2px);background:var(--gold-glow)}
-
-/* Experience */
 .exp-item{display:grid;grid-template-columns:220px 1fr;gap:50px;padding:40px 0;border-bottom:1px solid var(--border);position:relative}
 .exp-item:last-child{border-bottom:none}
 .exp-item::before{content:'';position:absolute;left:215px;top:50px;bottom:30px;width:1px;background:var(--border2)}
@@ -221,8 +197,6 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .exp-content{padding-left:30px}
 .exp-content h3{font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:12px;letter-spacing:-.01em}
 .exp-content p{font-size:.95rem;color:var(--text-dim);line-height:1.75;font-weight:300}
-
-/* Contact */
 .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .contact-text h3{font-family:'Outfit',sans-serif;font-size:clamp(36px,4.5vw,64px);font-weight:700;line-height:1.05;letter-spacing:-.035em;margin-bottom:24px}
 .contact-text h3 span{color:var(--gold)}
@@ -241,17 +215,11 @@ nav.scrolled{border-bottom-color:var(--border);background:rgba(5,5,7,.92)}
 .contact-link-val{font-size:.95rem;font-weight:500}
 .contact-link-arrow{color:var(--gold-dim);font-size:1.2rem;transition:transform .3s;z-index:1}
 .contact-link:hover .contact-link-arrow{transform:translateX(6px);color:var(--gold)}
-
-/* Footer */
 footer{border-top:1px solid var(--border);padding:32px 60px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;background:var(--bg2)}
 footer p{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-faint);letter-spacing:.05em}
 footer span{color:var(--gold)}
-
-/* Reveals */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-
-/* Responsive */
 @media(max-width:1100px){.terminal{display:none}.hero{padding:120px 40px 80px}}
 @media(max-width:1000px){.killchain-stages{grid-template-columns:repeat(4,1fr)}.kc-stage{margin-right:0}.kc-detail{grid-template-columns:1fr;gap:20px}}
 @media(max-width:900px){nav{padding:0 24px}.nav-links{display:none}.nav-badge{display:none}.nav-hamburger{display:flex}.section{padding:80px 24px}.section-full{padding:80px 24px}.about-grid{grid-template-columns:1fr;gap:50px}.about-cards{grid-template-columns:1fr}.projects-grid{grid-template-columns:1fr}.project-card.featured{grid-template-columns:1fr;gap:30px;padding:28px}.skills-layout{grid-template-columns:1fr 1fr}.contact-layout{grid-template-columns:1fr;gap:50px}.exp-item{grid-template-columns:1fr;gap:16px}.exp-item::before,.exp-item::after{display:none}.exp-content{padding-left:0}.hero-stats{gap:24px}.stat::before{display:none}.project-stats{grid-template-columns:repeat(3,1fr)}footer{flex-direction:column;gap:12px;text-align:center;padding:28px 24px}.killchain-stages{grid-template-columns:repeat(2,1fr)}.hero{padding:100px 24px 60px}.hero h1{font-size:clamp(36px,10vw,52px)}.hero-desc{font-size:1rem}.section-label h2{font-size:clamp(26px,5vw,40px)}}
@@ -259,14 +227,12 @@ footer span{color:var(--gold)}
 </style>
 </head>
 <body>
-
 <a href="#main" class="skip-nav">Skip to main content</a>
 <div class="progress-bar" id="progress" role="progressbar" aria-label="Page scroll progress"></div>
 <div class="grid-bg" aria-hidden="true"></div>
 <div class="orb orb-1" aria-hidden="true"></div>
 <div class="orb orb-2" aria-hidden="true"></div>
 <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
-
 <nav id="nav" role="navigation" aria-label="Main navigation">
     <a href="#" class="nav-logo" aria-label="Gurmandeep Deol - Home"><span class="nav-logo-dot" aria-hidden="true"></span>GD<span>.sec</span></a>
     <ul class="nav-links">
@@ -277,9 +243,8 @@ footer span{color:var(--gold)}
         <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <div class="nav-badge" aria-label="Available for co-op Fall 2026 or Winter 2027"><span class="nav-badge-dot" aria-hidden="true"></span><span>Available &middot; Fall/Winter</span></div>
+    <div class="nav-badge" aria-label="Available for Fall 2026 or Winter 2027"><span class="nav-badge-dot" aria-hidden="true"></span><span>Available &middot; Fall / Winter</span></div>
 </nav>
-
 <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
     <a href="#about" onclick="closeMobileNav()">About</a>
     <a href="#killchain" onclick="closeMobileNav()">Attack Chain</a>
@@ -287,20 +252,18 @@ footer span{color:var(--gold)}
     <a href="#skills" onclick="closeMobileNav()">Skills</a>
     <a href="#contact" onclick="closeMobileNav()">Contact</a>
 </div>
-
 <main id="main">
 <section class="hero" aria-label="Introduction">
     <div class="hero-bg-text" aria-hidden="true">CYBER</div>
     <div class="hero-inner">
         <div class="hero-eyebrow"><span class="hero-eyebrow-dot" aria-hidden="true"></span><span>Seneca Polytechnic &middot; <b>Cybersecurity (IFS)</b></span></div>
         <h1><span class="name">Gurmandeep Deol</span><span class="title-line"><b>Detection Engineer</b> &middot; <b>Security Researcher</b></span></h1>
-        <p class="hero-desc">Three credited HIGH severity vulnerability discoveries in a production open-source project (18K+ GitHub stars) &mdash; three consecutive patch bypasses in BookStack's content filter. Building enterprise-grade detection labs and simulating ransomware attack chains from the ground up.</p>
+        <p class="hero-desc">Three credited HIGH severity vulnerability discoveries in a production open-source project (18K+ GitHub stars) &mdash; three consecutive patch bypasses in BookStack's content filter. Full RansomHub kill chain rebuilt with detection coverage across every stage.</p>
         <div class="hero-stats" role="list" aria-label="Key stats">
-            <div class="stat" role="listitem"><span class="stat-num" data-count="3">0</span><span class="stat-label">Credited Findings</span></div>
-            <div class="stat" role="listitem"><span class="stat-num" data-count="9">0</span><span class="stat-label">VM Lab Envs</span></div>
-            <div class="stat" role="listitem"><span class="stat-num" data-count="14">0</span><span class="stat-label">Suricata Rules</span></div>
-            <div class="stat" role="listitem"><span class="stat-num" data-count="235" data-suffix="K+">0</span><span class="stat-label">URLs Classified</span></div>
-            <div class="stat" role="listitem"><span class="stat-num" data-count="99" data-suffix="%+">0</span><span class="stat-label">ML Accuracy</span></div>
+            <div class="stat" role="listitem"><span class="stat-num" data-count="3">0</span><span class="stat-label">Credited CVEs</span></div>
+            <div class="stat" role="listitem"><span class="stat-num" data-count="9">0</span><span class="stat-label">VM Detection Lab</span></div>
+            <div class="stat" role="listitem"><span class="stat-num" data-count="43">0</span><span class="stat-label">Detection Rules</span></div>
+            <div class="stat" role="listitem"><span class="stat-num" data-count="12">0</span><span class="stat-label">MITRE Techniques</span></div>
         </div>
         <div class="hero-actions">
             <a href="#killchain" class="btn btn-gold">Explore Attack Chain <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
@@ -313,11 +276,10 @@ footer span{color:var(--gold)}
     </div>
     <div class="scroll-hint" aria-hidden="true"><span>Scroll</span></div>
 </section>
-
 <section class="section" id="killchain" aria-label="RansomHub Attack Chain">
     <div class="section-label reveal"><span class="section-label-num">01 / Attack Chain</span><h2>RansomHub Attack Chain</h2><div class="section-label-line" aria-hidden="true"></div></div>
     <div class="killchain-wrap reveal">
-        <div class="killchain-intro"><p>This is the actual <b>RansomHub attack chain</b> I rebuilt for my SPR600 detection engineering project. Click any phase to see the technique used and the detection rules I wrote to catch it.</p></div>
+        <div class="killchain-intro"><p>Rebuilt the full <b>RansomHub kill chain</b> for my SPR600 detection engineering project. Click any phase to see the technique used and the detection rules I wrote to catch it.</p></div>
         <div class="killchain">
             <div class="killchain-stages" id="kc-stages" role="tablist" aria-label="Attack chain phases"></div>
             <div class="kc-detail" id="kc-detail" role="tabpanel">
@@ -327,26 +289,34 @@ footer span{color:var(--gold)}
         </div>
     </div>
 </section>
-
 <div class="section-full" id="about">
     <div class="section-full-inner">
         <div class="section-label reveal"><span class="section-label-num">02 / About</span><h2>Who I Am</h2><div class="section-label-line" aria-hidden="true"></div></div>
         <div class="about-grid">
             <div class="about-text reveal">
-                <p>I'm a third-year student in the <strong>Honours Bachelor of Information Technology &ndash; Cybersecurity (IFS)</strong> program at <strong>Seneca Polytechnic</strong>, graduating Summer 2027. Actively seeking a <strong>Fall 2026 or Winter 2027 co-op</strong> in threat detection, SOC analysis, or cyber intelligence.</p>
-                <p>My approach is hands-on first. Rather than relying on theory, I build and break real environments &mdash; a 9-VM enterprise lab running Active Directory, pfSense, Suricata, Zeek, Wazuh, Splunk, and ELK Stack. I also conduct <strong>vulnerability research on real open-source projects</strong>, with three credited security findings in BookStack (18K+ GitHub stars) &mdash; each one bypassing the patch written for the previous. My most recent project involved <strong>rebuilding the full RansomHub kill chain</strong> from a real DFIR Report incident and engineering detection coverage for every stage.</p>
-                <p>I'm particularly interested in <strong>detection engineering</strong>, <strong>vulnerability research</strong>, <strong>threat intelligence</strong>, and <strong>blue team operations</strong> &mdash; understanding how attackers think in order to catch them more effectively.</p>
+                <p>I'm a third-year student in the <strong>Honours Bachelor of Information Technology &ndash; Cybersecurity (IFS)</strong> program at <strong>Seneca Polytechnic</strong>, graduating August 2027. Actively seeking a <strong>Fall 2026 or Winter 2027 co-op</strong> in detection engineering, threat hunting, SOC operations, or digital forensics.</p>
+                <p>My approach is hands-on first. Rather than relying on theory, I build and break real environments &mdash; a 9-VM enterprise lab running Active Directory, pfSense, Suricata, Zeek, Wazuh, Splunk, and ELK Stack. I've also conducted <strong>vulnerability research on real open-source projects</strong>, with three credited security findings in BookStack (18K+ GitHub stars) &mdash; each one bypassing the patch written for the previous. My most involved project was <strong>rebuilding the full RansomHub kill chain</strong> from a real DFIR Report incident and engineering detection coverage for every stage.</p>
+                <p>What I care about most: writing detection that holds up when the attacker changes tools, and doing evidence work that would survive outside scrutiny. If it can't be reproduced or defended in a report, it doesn't count.</p>
             </div>
             <div class="about-cards reveal">
-                <div class="about-card"><div class="about-card-icon" aria-hidden="true">&LeftRightArrow;</div><h4>Detection Engineering</h4><p>Suricata rules, Zeek behavioral scripts, Wazuh HIDS, MITRE ATT&amp;CK mapping, multi-layer SIEM correlation.</p></div>
-                <div class="about-card"><div class="about-card-icon" aria-hidden="true">&diamondsuit;</div><h4>Vulnerability Research</h4><p>Burp Suite Pro, source code review, HTMLPurifier analysis, responsible disclosure, 3 credited findings in production OSS.</p></div>
-                <div class="about-card"><div class="about-card-icon" aria-hidden="true">&Cross;</div><h4>Offensive Security</h4><p>Kerberoasting, Golden Ticket, Pass-the-Hash, DCSync &mdash; used to improve detection coverage.</p></div>
-                <div class="about-card"><div class="about-card-icon" aria-hidden="true">&sum;</div><h4>Data Analysis &amp; ML</h4><p>Python pipelines, BERT/XGBoost ensembles, SHAP/LIME, Flask APIs, n8n automation.</p></div>
+                <div class="about-card"><div class="about-card-icon" aria-hidden="true">&LeftRightArrow;</div><h4>Detection Engineering</h4><p>Suricata rules, Zeek behavioural scripts, Wazuh HIDS, MITRE ATT&amp;CK mapping, multi-layer SIEM correlation across 5 attack variations.</p></div>
+                <div class="about-card"><div class="about-card-icon" aria-hidden="true">&diamondsuit;</div><h4>Vulnerability Research</h4><p>Burp Suite Pro, source code review, HTMLPurifier internals, responsible disclosure. 3 credited HIGH severity findings in production OSS.</p></div>
+                <div class="about-card"><div class="about-card-icon" aria-hidden="true">&FilledSmallSquare;</div><h4>Digital Forensics</h4><p>dd imaging under hardware write blockers, Autopsy, Scalpel carving, Volatility, manual MBR / FAT16 hex parsing, chain of custody documentation.</p></div>
+                <div class="about-card"><div class="about-card-icon" aria-hidden="true">&Cross;</div><h4>Offensive Security</h4><p>Kerberoasting, Golden Ticket, Pass-the-Hash, DCSync &mdash; used to validate and improve detection coverage rather than for its own sake.</p></div>
+            </div>
+        </div>
+        <div class="cert-block reveal">
+            <h4>Certifications</h4>
+            <div class="cert-item">
+                <div>
+                    <div class="cert-name">Google Cybersecurity Professional Certificate</div>
+                    <div class="cert-issuer"><b>Google</b> &middot; Issued Aug 2026 &middot; Credential ID DVRU5UXIBO0N</div>
+                </div>
+                <a href="https://www.coursera.org/account/accomplishments/specialization/DVRU5UXIBO0N" target="_blank" rel="noopener" class="cert-verify">Verify &rarr;</a>
             </div>
         </div>
     </div>
 </div>
-
 <section class="section" id="projects" aria-label="Projects">
     <div class="section-label reveal"><span class="section-label-num">03 / Projects</span><h2>Selected Work</h2><div class="section-label-line" aria-hidden="true"></div></div>
     <div class="projects-grid">
@@ -354,24 +324,23 @@ footer span{color:var(--gold)}
             <div>
                 <div class="project-tag" style="background:var(--gold);color:var(--bg);border-color:var(--gold)">&starf; Credited Security Research &middot; WAS705</div>
                 <h3>BookStack Vulnerability Research &mdash; 3 Credited HIGH Severity Findings</h3>
-                <p class="project-desc">Independently discovered and responsibly disclosed three HIGH severity vulnerabilities in BookStack, an open-source documentation platform with 18K+ GitHub stars. Credited by name in all three official security releases by maintainer Dan Brown. Each finding bypassed the patch written for the previous one &mdash; demonstrating deep understanding of HTMLPurifier sanitizer internals and the fundamental fragility of blocklist-based content filtering.</p>
+                <p class="project-desc">Independently discovered and responsibly disclosed three HIGH severity vulnerabilities in BookStack, an open-source documentation platform with 18K+ GitHub stars. Credited by name in all three official security releases by the maintainer. Each finding bypassed the patch written for the previous one &mdash; demonstrating a deep understanding of HTMLPurifier sanitizer internals and the fundamental fragility of blocklist-based content filtering.</p>
                 <div class="project-stats" style="grid-template-columns:repeat(4,1fr)">
                     <div class="p-stat"><span class="p-stat-num">3</span><span class="p-stat-label">Credited Findings</span></div>
                     <div class="p-stat"><span class="p-stat-num">7.1</span><span class="p-stat-label">CVSS Score</span></div>
                     <div class="p-stat"><span class="p-stat-num">18K+</span><span class="p-stat-label">GitHub Stars</span></div>
                     <div class="p-stat"><span class="p-stat-num">3</span><span class="p-stat-label">Patches Released</span></div>
                 </div>
-                <div class="tech-stack"><span>Burp Suite Pro</span><span>PHP</span><span>HTMLPurifier</span><span>Laravel</span><span>Responder</span><span>Source Code Review</span><span>Responsible Disclosure</span></div>
+                <div class="tech-stack"><span>Burp Suite Pro</span><span>HTMLPurifier</span><span>Responder</span><span>Source Code Review</span><span>Responsible Disclosure</span></div>
             </div>
             <div>
                 <ul class="project-bullets">
                     <li>Finding 1 (v26.05.1): file:// protocol injection in content attributes enabling NTLM credential theft on Windows</li>
-                    <li>Finding 2 (v26.05.2): file:// protocol bypass via srcset attribute &mdash; not covered by v26.05.1 patch due to HTMLPurifier treating srcset as "URI candidate list"</li>
-                    <li>Finding 3 (v26.05.2): Protocol-relative URL bypass (//attacker) in srcset &mdash; bypasses str_contains() blocklist. Three vectors: credential phishing, silent SMB hash theft, session cookie leakage</li>
+                    <li>Finding 2 (v26.05.2): file:// protocol bypass via srcset attribute &mdash; not covered by the v26.05.1 patch due to HTMLPurifier treating srcset as a "URI candidate list"</li>
+                    <li>Finding 3 (v26.05.2): protocol-relative URL bypass (//attacker) in srcset &mdash; slips past str_contains() blocklist. Three vectors: credential phishing, silent SMB hash theft, session cookie leakage</li>
                     <li>All three confirmed via Burp Suite Pro, Responder (NTLMv2 capture), and source code review of SrcsetAttrDef.php and ExportFormatter.php</li>
-                    <li>Responsible disclosure to Dan Brown &mdash; credited by name in all three official security release blog posts</li>
-                    <li>Comprehensive STRIDE threat model with 12 threats mapped to 13 BookStack components based on source code analysis</li>
-                    <li>71 WSTG test cases across 12 security domains, 9,751 API fuzzing requests, Semgrep + Snyk static analysis</li>
+                    <li>Responsible disclosure to the maintainer &mdash; credited by name in all three official security release blog posts</li>
+                    <li>Paired with a STRIDE threat model of the platform and 71 WSTG test cases across 12 security domains</li>
                 </ul>
                 <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
                     <a href="https://www.bookstackapp.com/blog/bookstack-release-v26-05-1/" target="_blank" rel="noopener" class="btn btn-outline" style="padding:10px 18px;font-size:.65rem">v26.05.1 Credit &rarr;</a>
@@ -385,27 +354,91 @@ footer span{color:var(--gold)}
                 <h3>RansomHub Threat Hunting Simulation</h3>
                 <p class="project-desc">Rebuilt the full 8-phase RansomHub ransomware kill chain from The DFIR Report's "Hide Your RDP" case in a purpose-built 9-VM enterprise lab. Engineered a three-layer detection strategy and validated it across 5 attack variations.</p>
                 <div class="project-stats"><div class="p-stat"><span class="p-stat-num">9</span><span class="p-stat-label">VMs</span></div><div class="p-stat"><span class="p-stat-num">14</span><span class="p-stat-label">Suricata</span></div><div class="p-stat"><span class="p-stat-num">22</span><span class="p-stat-label">Wazuh</span></div><div class="p-stat"><span class="p-stat-num">12</span><span class="p-stat-label">MITRE</span></div><div class="p-stat"><span class="p-stat-num">9</span><span class="p-stat-label">Alerts</span></div></div>
-                <div class="tech-stack"><span>Suricata</span><span>Zeek</span><span>Wazuh</span><span>Splunk</span><span>Sysmon</span><span>Kali Linux</span><span>Windows Server</span><span>Bash</span></div>
+                <div class="tech-stack"><span>Suricata</span><span>Zeek</span><span>Wazuh</span><span>Splunk</span><span>Sysmon</span><span>Kali Linux</span><span>Windows Server</span></div>
             </div>
             <div>
                 <ul class="project-bullets">
-                    <li>Deployed 9-VM isolated enterprise network: Router, Suricata sensor, Zeek sensor, Kali attacker, Beachhead (Win10), DC01, FileServer, Server02, Wazuh SIEM</li>
+                    <li>Deployed a 9-VM isolated enterprise network: router, Suricata sensor, Zeek sensor, Kali attacker, Beachhead (Win10), DC01, FileServer, Server02, Wazuh SIEM</li>
                     <li>Executed 8 attack phases: RDP password spray &rarr; Mimikatz credential harvest &rarr; DCSync &rarr; pass-the-hash &rarr; Rclone SFTP exfiltration &rarr; RMM persistence &rarr; ransomware deployment</li>
-                    <li>14 Suricata rules, 3 Zeek behavioral notices, 5 Wazuh HIDS rules confirmed firing during live simulation</li>
+                    <li>14 Suricata rules, 3 Zeek behavioural notices, 5 Wazuh HIDS rules confirmed firing during live simulation</li>
                     <li>Configured 9 OpenSearch Discord alert monitors dispatching real-time notifications within 60 seconds</li>
-                    <li>Validated detection robustness across 5 attack variations &mdash; behavior-based detection held when tools changed</li>
+                    <li>Validated detection robustness across 5 attack variations &mdash; behaviour-based detection held when tools changed</li>
+                    <li>Each rule documented with its rationale, tuning history, and expected false-positive shape so the whole ruleset could be handed off audit-style</li>
                 </ul>
             </div>
         </div>
-        <div class="project-card reveal"><div class="project-tag">Purple Team &middot; SPR708</div><h3>Purple Team Kill Chain &mdash; Isolated Lab</h3><p>Designed and executed a realistic adversary kill chain in a fully isolated 7-zone VMware lab to test and improve detection coverage. Attacker starts on the simulated internet with zero credentials and works inward through the perimeter, DMZ, and internal AD.</p><ul class="project-bullets"><li>7 network zones routed through pfSense; AD domain lab.local with client, server, and DC hosts</li><li>Defensive stack: Wazuh 4.7.5 SIEM with custom detection rules mapped to MITRE ATT&amp;CK, plus Caldera and VECTR for adversary emulation and purple team tracking</li><li>Kill chain: T1190 web exploit through the WAF to land on the DMZ, then internal pivot with mitm6 and ntlmrelayx for AD compromise</li><li>Post-exploitation phases fully built and tested; initial access stage grounded in current threat intel (M-Trends, ClickFix, T1204.004)</li><li>Followed the "Purple Team Strategies" methodology (Routin, Thoores, Rossier)</li></ul><div class="tech-stack"><span>Wazuh 4.7.5</span><span>pfSense</span><span>Caldera</span><span>VECTR</span><span>MITRE ATT&amp;CK</span><span>Kali Linux</span><span>Active Directory</span><span>ntlmrelayx</span></div></div>
-        <div class="project-card reveal"><div class="project-tag">Blue Team</div><h3>SIEM Implementation &amp; Log Analysis</h3><p>Deployed enterprise SIEM with ELK Stack and Splunk for centralized threat detection and log correlation.</p><ul class="project-bullets"><li>3-node Elasticsearch cluster with Splunk Universal Forwarders</li><li>PCAP analysis identifying malicious DoH tunnelling patterns</li><li>OTX, MISP, Abuse.ch feed integration via Filebeat</li><li>Anomaly detection on access patterns across Windows/Linux hosts</li></ul><div class="tech-stack"><span>ELK Stack</span><span>Splunk</span><span>Filebeat</span><span>Sysmon</span><span>Wireshark</span></div></div>
-        <div class="project-card reveal"><div class="project-tag">ML / Data Science</div><h3>Phishing URL Detection &mdash; ML Pipeline</h3><p>Built end-to-end ML pipeline achieving 99%+ accuracy on 235,000+ URLs with full explainability stack.</p><ul class="project-bullets"><li>BERT, TabTransformer, Random Forest, XGBoost ensemble</li><li>62 engineered features, Optuna hyperparameter tuning</li><li>SHAP + LIME model explainability; Flask API deployment</li><li>Gemini API integration for LLM-powered threat enrichment</li></ul><div class="tech-stack"><span>Python</span><span>PyTorch</span><span>XGBoost</span><span>SHAP</span><span>Flask</span><span>n8n</span></div></div>
-        <div class="project-card reveal"><div class="project-tag">Red Team &middot; Infrastructure</div><h3>Active Directory Penetration Testing Lab</h3><p>Full enterprise AD environment for attack simulation and detection validation.</p><ul class="project-bullets"><li>Windows Server DCs, DNS, DHCP, pfSense WAN/DMZ/Internal zones</li><li>Kerberoasting, Golden Ticket, Pass-the-Hash, DCSync attacks</li><li>OpenVPN with certificate-based auth across Kali/Windows clients</li><li>Automated attack chains via Python/Bash and Impacket toolkit</li></ul><div class="tech-stack"><span>Windows Server</span><span>pfSense</span><span>Mimikatz</span><span>Impacket</span><span>OpenVPN</span></div></div>
-        <div class="project-card reveal"><div class="project-tag">Network Security</div><h3>Network Security Lab &mdash; IDS/WAF</h3><p>4-VM security lab for attack detection and prevention across web application attack vectors.</p><ul class="project-bullets"><li>Custom Snort IDS rules: SQLi, XSS, command injection, directory traversal</li><li>ModSecurity WAF with OWASP Core Rule Set for real-time blocking</li><li>DVWA as vulnerable target; Kali as attacker</li></ul><div class="tech-stack"><span>Snort</span><span>ModSecurity</span><span>OWASP CRS</span><span>DVWA</span></div></div>
-        <div class="project-card reveal"><div class="project-tag">Infrastructure &middot; PKI</div><h3>PKI Infrastructure &amp; Certificate Authority</h3><p>Complete PKI chain from Root CA through Intermediate CA with revocation infrastructure.</p><ul class="project-bullets"><li>Root CA + Intermediate CA via OpenSSL on Kali Linux</li><li>Apache SSL/TLS with custom CA-issued certificates</li><li>CRL-based revocation and cross-VM browser trust</li></ul><div class="tech-stack"><span>OpenSSL</span><span>Apache</span><span>SSL/TLS</span><span>PKI</span><span>CRL</span></div></div>
+        <div class="project-card reveal">
+            <div class="project-tag">&starf; Digital Forensics &middot; SPR400</div>
+            <h3>Larry's USB &mdash; Digital Forensics Investigation</h3>
+            <p>Full forensic examination of a USB drive seized from an employee suspected of selling company data. Produced a 22-page investigation report covering scope, findings, admissibility, chain of custody, and recommendations.</p>
+            <ul class="project-bullets">
+                <li>Imaged media with dd under a hardware write blocker; hashed source and image with MD5 and SHA-1 to establish evidentiary integrity before touching anything</li>
+                <li>Parsed MBR partition tables and FAT16 boot sectors manually from raw hex to locate the root directory; validated against mmls and fdisk output</li>
+                <li>Recovered a password concealed in partition slack space and a list of buyers hidden inside a JPEG using steganography</li>
+                <li>Used Autopsy, Scalpel, and Volatility for file carving, timeline reconstruction, and memory analysis on clean and infected images</li>
+            </ul>
+            <div class="tech-stack"><span>dd</span><span>Autopsy</span><span>Scalpel</span><span>Volatility</span><span>FTK Imager</span><span>HxD</span><span>Write Blocker</span></div>
+        </div>
+        <div class="project-card reveal">
+            <div class="project-tag">Purple Team &middot; SPR708</div>
+            <h3>Purple Team Kill Chain &mdash; Isolated Lab</h3>
+            <p>Designed and executed a realistic adversary kill chain in a fully isolated 7-zone VMware lab to test and improve detection coverage. Attacker starts on the simulated internet with zero credentials and works inward through the perimeter, DMZ, and internal AD.</p>
+            <ul class="project-bullets">
+                <li>7 network zones routed through pfSense; AD domain lab.local with client, server, and DC hosts</li>
+                <li>Defensive stack: Wazuh 4.7.5 SIEM with custom detection rules mapped to MITRE ATT&amp;CK, plus Caldera and VECTR for adversary emulation and purple team tracking</li>
+                <li>Kill chain: T1190 web exploit through the WAF to land on the DMZ, then internal pivot with mitm6 and ntlmrelayx for AD compromise</li>
+                <li>Followed the "Purple Team Strategies" methodology (Routin, Thoores, Rossier)</li>
+            </ul>
+            <div class="tech-stack"><span>Wazuh 4.7.5</span><span>pfSense</span><span>Caldera</span><span>VECTR</span><span>MITRE ATT&amp;CK</span><span>Kali Linux</span><span>ntlmrelayx</span></div>
+        </div>
+        <div class="project-card reveal">
+            <div class="project-tag">Blue Team &middot; Infrastructure</div>
+            <h3>Multi-Node SIEM &amp; Threat Hunting Lab</h3>
+            <p>Deployed an enterprise SIEM environment for centralised log collection, threat intelligence enrichment, and weekly hunting cycles against a Windows + Linux estate.</p>
+            <ul class="project-bullets">
+                <li>3-node Elasticsearch cluster alongside a Splunk instance; ingested via Filebeat and Windows Event forwarders with parser normalisation for consistent field mapping</li>
+                <li>Enriched logs with threat intelligence feeds (AlienVault OTX, MISP, Abuse.ch) to automatically flag known-malicious IPs and file hashes in real time</li>
+                <li>Weekly threat hunting cycles: authentication failures, PowerShell activity, DNS anomalies, and lateral movement indicators against a documented baseline</li>
+                <li>PCAP analysis identifying DoH tunnelling patterns and other covert channels</li>
+            </ul>
+            <div class="tech-stack"><span>ELK Stack</span><span>Splunk</span><span>Filebeat</span><span>Sysmon</span><span>Wireshark</span><span>OTX</span><span>MISP</span></div>
+        </div>
+        <div class="project-card reveal">
+            <div class="project-tag">Red Team &middot; Active Directory</div>
+            <h3>Active Directory Attack &amp; Detection Lab</h3>
+            <p>Full enterprise AD environment for hands-on attack execution, then flipped to the defender's side to build the detection rules that would catch each technique.</p>
+            <ul class="project-bullets">
+                <li>Windows Server 2022 domain controllers, DNS, DHCP, pfSense with segmented WAN / DMZ / Internal zones</li>
+                <li>Executed Kerberoasting, Golden Ticket, Pass-the-Hash, and DCSync attacks using Impacket and Mimikatz</li>
+                <li>OpenVPN with certificate-based auth across Kali and Windows clients; certificate revocation exercises</li>
+                <li>Each attack technique paired with the Sysmon / Windows event ID signature it left behind, feeding directly into the detection rulesets above</li>
+            </ul>
+            <div class="tech-stack"><span>Windows Server</span><span>pfSense</span><span>Mimikatz</span><span>Impacket</span><span>OpenVPN</span><span>Sysmon</span></div>
+        </div>
+        <div class="project-card reveal">
+            <div class="project-tag">Network Security &middot; IDS / WAF</div>
+            <h3>Network Security Lab &mdash; IDS / WAF</h3>
+            <p>4-VM security lab for attack detection and prevention across the OWASP Top 10 web application attack vectors.</p>
+            <ul class="project-bullets">
+                <li>Custom Snort IDS rules covering SQLi, XSS, command injection, and directory traversal</li>
+                <li>ModSecurity WAF with OWASP Core Rule Set for real-time blocking; DVWA as the vulnerable target and Kali as the attacker</li>
+                <li>Full request / block traces reviewed to understand which OWASP CRS rules fired and why</li>
+            </ul>
+            <div class="tech-stack"><span>Snort</span><span>ModSecurity</span><span>OWASP CRS</span><span>DVWA</span></div>
+        </div>
+        <div class="project-card reveal">
+            <div class="project-tag">Infrastructure &middot; PKI</div>
+            <h3>SSL / TLS &amp; PKI Infrastructure Lab</h3>
+            <p>Complete PKI chain from Root CA through Intermediate CA with revocation infrastructure and full trust deployment across the lab.</p>
+            <ul class="project-bullets">
+                <li>Root CA + Intermediate CA built with OpenSSL on Kali Linux; end-entity certificates issued and deployed to Apache SSL/TLS endpoints</li>
+                <li>Configured CRL-based revocation and cross-VM browser trust</li>
+                <li>Analysed common certificate errors (untrusted issuer, expired cert, name mismatch) and the underlying cryptographic causes of each</li>
+            </ul>
+            <div class="tech-stack"><span>OpenSSL</span><span>Apache</span><span>SSL/TLS</span><span>PKI</span><span>CRL</span></div>
+        </div>
     </div>
 </section>
-
 <div class="section-full" id="skills">
     <div class="section-full-inner">
         <div class="section-label reveal"><span class="section-label-num">04 / Skills</span><h2>Tooling &amp; Stack</h2><div class="section-label-line" aria-hidden="true"></div></div>
@@ -413,93 +446,64 @@ footer span{color:var(--gold)}
             <div class="skill-block reveal"><h3>Detection &amp; Response</h3><div class="skill-list"><span>Suricata</span><span>Zeek</span><span>Wazuh HIDS</span><span>Snort IDS</span><span>SIEM Correlation</span><span>MITRE ATT&amp;CK</span><span>IOC Analysis</span><span>Threat Hunting</span></div></div>
             <div class="skill-block reveal"><h3>SIEM &amp; Log Analysis</h3><div class="skill-list"><span>Splunk</span><span>Elasticsearch</span><span>Logstash</span><span>Kibana</span><span>Filebeat</span><span>Sysmon</span><span>Log Correlation</span><span>Anomaly Detection</span></div></div>
             <div class="skill-block reveal"><h3>Threat Intelligence</h3><div class="skill-list"><span>AlienVault OTX</span><span>MISP</span><span>Abuse.ch</span><span>VirusTotal</span><span>Feed Integration</span><span>IOC Management</span></div></div>
-            <div class="skill-block reveal"><h3>Web Application Security</h3><div class="skill-list"><span>Burp Suite Pro</span><span>OWASP Top 10</span><span>XSS Testing</span><span>SQLi Testing</span><span>SSRF</span><span>Responsible Disclosure</span><span>CVE Research</span><span>Source Code Review</span></div></div>
-            <div class="skill-block reveal"><h3>Offensive Security</h3><div class="skill-list"><span>Metasploit</span><span>Burp Suite</span><span>Mimikatz</span><span>Impacket</span><span>Caldera</span><span>VECTR</span><span>ntlmrelayx</span><span>Hashcat</span><span>Nmap</span><span>Wireshark</span></div></div>
-            <div class="skill-block reveal"><h3>Networking &amp; Infrastructure</h3><div class="skill-list"><span>pfSense</span><span>VLAN</span><span>OpenVPN</span><span>DNS/DHCP</span><span>PCAP Analysis</span><span>IDS/IPS</span><span>PKI</span><span>SSL/TLS</span></div></div>
-            <div class="skill-block reveal"><h3>Programming &amp; Automation</h3><div class="skill-list"><span>Python</span><span>Bash</span><span>Flask API</span><span>n8n</span><span>REST APIs</span><span>PyTorch</span><span>scikit-learn</span><span>SHAP/LIME</span></div></div>
-            <div class="skill-block reveal"><h3>Active Directory</h3><div class="skill-list"><span>Domain Controllers</span><span>Group Policy</span><span>Kerberos</span><span>DNS/DHCP</span><span>User Management</span></div></div>
-            <div class="skill-block reveal"><h3>Virtualization &amp; Tools</h3><div class="skill-list"><span>VMware</span><span>VirtualBox</span><span>Docker</span><span>ModSecurity WAF</span><span>OWASP CRS</span><span>OpenSSL</span></div></div>
+            <div class="skill-block reveal"><h3>Digital Forensics</h3><div class="skill-list"><span>Autopsy</span><span>Scalpel</span><span>Volatility</span><span>FTK Imager</span><span>dd Imaging</span><span>Write Blockers</span><span>HxD</span><span>MBR / FAT Parsing</span><span>Chain of Custody</span></div></div>
+            <div class="skill-block reveal"><h3>Web Application Security</h3><div class="skill-list"><span>Burp Suite Pro</span><span>OWASP Top 10</span><span>XSS Testing</span><span>SQLi Testing</span><span>SSRF</span><span>Source Code Review</span><span>Responsible Disclosure</span><span>CVE Research</span></div></div>
+            <div class="skill-block reveal"><h3>Offensive Security</h3><div class="skill-list"><span>Metasploit</span><span>Mimikatz</span><span>Impacket</span><span>Caldera</span><span>VECTR</span><span>ntlmrelayx</span><span>Hashcat</span><span>Nmap</span><span>Wireshark</span></div></div>
+            <div class="skill-block reveal"><h3>Networking &amp; Infrastructure</h3><div class="skill-list"><span>pfSense</span><span>VLAN</span><span>OpenVPN</span><span>DNS / DHCP</span><span>PCAP Analysis</span><span>IDS / IPS</span><span>PKI</span><span>SSL / TLS</span></div></div>
+            <div class="skill-block reveal"><h3>Active Directory</h3><div class="skill-list"><span>Domain Controllers</span><span>Group Policy</span><span>Kerberos</span><span>NTFS Permissions</span><span>User Provisioning</span><span>Access Reviews</span></div></div>
+            <div class="skill-block reveal"><h3>Frameworks &amp; Standards</h3><div class="skill-list"><span>MITRE ATT&amp;CK</span><span>OWASP Top 10</span><span>NIST SP 800-207</span><span>PCI DSS v4.0.1</span><span>Zero Trust Architecture</span><span>Incident Response Lifecycle</span></div></div>
         </div>
     </div>
 </div>
-
 <section class="section" id="experience" aria-label="Experience">
-    <div class="section-label reveal"><span class="section-label-num">05 / Experience</span><h2>Career Path</h2><div class="section-label-line" aria-hidden="true"></div></div>
+    <div class="section-label reveal"><span class="section-label-num">05 / Experience</span><h2>Path So Far</h2><div class="section-label-line" aria-hidden="true"></div></div>
     <div class="reveal">
-        <div class="exp-item"><div class="exp-meta"><span class="exp-date">Sept 2023 &ndash; Present</span><span class="exp-company">Seneca Polytechnic</span></div><div class="exp-content"><h3>Honours Bachelor of IT &ndash; Cybersecurity (IFS)</h3><p>Relevant coursework: Threat Hunting &amp; Detection Engineering (SPR600), Attack and Defense / Purple Team (SPR708), Web Application Security Methodology (WAS705), Advanced Data Analysis for Security (SRT521), Cisco Network Security (DPI905), Research Methods (REA610). Expected graduation Summer 2027. Currently seeking Fall 2026 or Winter 2027 co-op.</p></div></div>
-        <div class="exp-item"><div class="exp-meta"><span class="exp-date">Jan 2020 &ndash; Jul 2020</span><span class="exp-company">A's Precision</span></div><div class="exp-content"><h3>Co-op Student</h3><p>Organized and maintained parts inventory using computer tracking systems. Gained exposure to manufacturing operations and quality control processes in a precision machining environment.</p></div></div>
+        <div class="exp-item"><div class="exp-meta"><span class="exp-date">Sept 2023 &ndash; Present</span><span class="exp-company">Seneca Polytechnic</span></div><div class="exp-content"><h3>Honours Bachelor of IT &ndash; Cybersecurity (IFS)</h3><p>Relevant coursework: Threat Hunting &amp; Detection Engineering (SPR600, A+), Web Application Security (WAS600, A+), Detection (SPR600, A+), Attack &amp; Defense (SPR708), Web Application Security Methodology (WAS705), Digital Forensics (SPR400), Cisco Network Security (DPI905), Privacy &amp; Confidentiality (SRT551), Ethics &amp; Law (SRT751, A+). Expected graduation August 2027. Actively seeking Winter 2027 co-op.</p></div></div>
+        <div class="exp-item"><div class="exp-meta"><span class="exp-date">Jan 2020 &ndash; Jul 2020</span><span class="exp-company">A's Precision</span></div><div class="exp-content"><h3>Co-op Student</h3><p>Managed parts inventory and daily reporting using computer tracking systems across a multi-shift manufacturing operation. Interacted directly with production staff to resolve inventory discrepancies and escalate issues to supervisors when required.</p></div></div>
     </div>
 </section>
-
 <div class="section-full" id="contact">
     <div class="section-full-inner">
         <div class="section-label reveal"><span class="section-label-num">06 / Contact</span><h2>Get In Touch</h2><div class="section-label-line" aria-hidden="true"></div></div>
         <div class="contact-layout">
-            <div class="contact-text reveal"><h3>Let's build something <span>secure.</span></h3><p>Actively seeking a Fall 2026 or Winter 2027 co-op in cybersecurity &mdash; SOC analysis, threat detection, threat intelligence, or detection engineering. If you're hiring or want to connect, reach out below.</p><div class="contact-availability"><span class="contact-availability-dot" aria-hidden="true"></span>Available &middot; Sept 2026 or Jan 2027</div></div>
+            <div class="contact-text reveal"><h3>Let's build something <span>secure.</span></h3><p>Actively seeking a Fall 2026 or Winter 2027 co-op &mdash; detection engineering, SOC operations, threat intelligence, digital forensics, or IT audit. If you're hiring or want to connect, reach out below.</p><div class="contact-availability"><span class="contact-availability-dot" aria-hidden="true"></span>Available &middot; Sept 2026 or Jan 2027 &middot; 4 or 8 months</div></div>
             <div class="contact-links reveal">
                 <a href="mailto:gdeol14@myseneca.ca" class="contact-link"><div class="contact-link-left"><div class="contact-link-icon">@</div><div class="contact-link-info"><span class="contact-link-label">Email</span><span class="contact-link-val">gdeol14@myseneca.ca</span></div></div><span class="contact-link-arrow" aria-hidden="true">&rarr;</span></a>
-                <a href="https://www.linkedin.com/in/gurmandeep-deol/" target="_blank" rel="noopener" class="contact-link"><div class="contact-link-left"><div class="contact-link-icon">in</div><div class="contact-link-info"><span class="contact-link-label">LinkedIn</span><span class="contact-link-val">Gurmandeep Deol</span></div></div><span class="contact-link-arrow" aria-hidden="true">&rarr;</span></a>
+                <a href="https://www.linkedin.com/in/gurmandeep-deol-224604309" target="_blank" rel="noopener" class="contact-link"><div class="contact-link-left"><div class="contact-link-icon">in</div><div class="contact-link-info"><span class="contact-link-label">LinkedIn</span><span class="contact-link-val">Gurmandeep Deol</span></div></div><span class="contact-link-arrow" aria-hidden="true">&rarr;</span></a>
                 <a href="https://github.com/gdeol14" target="_blank" rel="noopener" class="contact-link"><div class="contact-link-left"><div class="contact-link-icon">{}</div><div class="contact-link-info"><span class="contact-link-label">GitHub</span><span class="contact-link-val">github.com/gdeol14</span></div></div><span class="contact-link-arrow" aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </div>
 </div>
 </main>
-
-<footer><p>&copy; 2026 <span>Gurmandeep Deol</span></p><p>Built for cybersecurity &middot; Designed to stand out</p></footer>
-
+<footer><p>&copy; 2026 <span>Gurmandeep Deol</span></p><p>Detection engineering &middot; Security research &middot; Built to hold up under scrutiny</p></footer>
 <script>
-// Progress bar
 const progress=document.getElementById('progress');window.addEventListener('scroll',()=>{const max=document.body.scrollHeight-window.innerHeight;progress.style.width=(window.scrollY/max)*100+'%'},{passive:true});
-
-// Nav scroll
 const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
-
-// Mobile nav
 const hamburger=document.getElementById('hamburger');const mobileNav=document.getElementById('mobile-nav');
 function closeMobileNav(){mobileNav.classList.remove('open');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
 hamburger.addEventListener('click',()=>{const open=mobileNav.classList.toggle('open');hamburger.classList.toggle('open');hamburger.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':''});
-
-// Cursor glow
 const cursorGlow=document.getElementById('cursor-glow');
 document.addEventListener('mousemove',(e)=>{cursorGlow.style.left=e.clientX+'px';cursorGlow.style.top=e.clientY+'px'},{passive:true});
-
-// Scroll reveal
 const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver((entries)=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('visible'),i*80);observer.unobserve(entry.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});reveals.forEach(el=>observer.observe(el));
-
-// Hero stagger
 document.querySelectorAll('.hero-inner > *').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition=`opacity 0.8s ease ${i*0.12}s, transform 0.8s ease ${i*0.12}s`;setTimeout(()=>{el.style.opacity='1';el.style.transform='translateY(0)'},100)});
-
-// Counter animation
 const counters=document.querySelectorAll('[data-count]');let countersStarted=false;
 function animateCounter(el){const target=parseInt(el.dataset.count);const suffix=el.dataset.suffix||'';const duration=1800;const start=performance.now();function update(now){const elapsed=now-start;const p=Math.min(elapsed/duration,1);const eased=1-Math.pow(1-p,3);el.textContent=Math.floor(target*eased)+suffix;if(p<1)requestAnimationFrame(update);else el.textContent=target+suffix}requestAnimationFrame(update)}
 const statObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting&&!countersStarted){countersStarted=true;counters.forEach((c,i)=>{setTimeout(()=>animateCounter(c),i*150)})}})},{threshold:0.5});counters.forEach(c=>statObserver.observe(c));
-
-// Terminal animation
-const terminalLines=[{type:'cmd',text:'./vuln_research.sh --target bookstack'},{type:'out',text:'[*] Analyzing BookStack v26.05.2...'},{type:'out',text:'[*] Reviewing SrcsetAttrDef.php...'},{type:'red',text:'[!] BYPASS: //attacker passes blocklist'},{type:'red',text:'[!] str_contains() misses proto-relative'},{type:'green',text:'[\u2713] Responder: NTLMv2 hash captured'},{type:'green',text:'[\u2713] SMB: silent credential theft'},{type:'green',text:'[\u2713] Cookie: session hijack confirmed'},{type:'out',text:'[*] Severity: HIGH | 3 attack vectors'},{type:'out',text:'[*] Disclosing to Dan Brown...'},{type:'green',text:'[\u2713] 3rd consecutive credited finding'},{type:'out',text:'[*] Total: 3 patches, 3 credits'}];
+const terminalLines=[{type:'cmd',text:'./vuln_research.sh --target bookstack'},{type:'out',text:'[*] Analyzing BookStack v26.05.2...'},{type:'out',text:'[*] Reviewing SrcsetAttrDef.php...'},{type:'red',text:'[!] BYPASS: //attacker passes blocklist'},{type:'red',text:'[!] str_contains() misses proto-relative'},{type:'green',text:'[\u2713] Responder: NTLMv2 hash captured'},{type:'green',text:'[\u2713] SMB: silent credential theft'},{type:'green',text:'[\u2713] Cookie: session hijack confirmed'},{type:'out',text:'[*] Severity: HIGH | 3 attack vectors'},{type:'out',text:'[*] Disclosing to maintainer...'},{type:'green',text:'[\u2713] 3rd consecutive credited finding'},{type:'out',text:'[*] Total: 3 patches, 3 credits'}];
 const terminalBody=document.getElementById('terminal-body');
 async function typeLine(line,container){const div=document.createElement('div');container.appendChild(div);if(line.type==='cmd'){const prompt=document.createElement('span');prompt.className='t-prompt';prompt.textContent='\u276F ';div.appendChild(prompt);const cmd=document.createElement('span');cmd.className='t-cmd';div.appendChild(cmd);for(let i=0;i<line.text.length;i++){cmd.textContent+=line.text[i];await sleep(30)}}else{const span=document.createElement('span');span.className='t-'+line.type;span.textContent=line.text;div.appendChild(span)}}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 async function runTerminal(){terminalBody.innerHTML='';for(let i=0;i<terminalLines.length;i++){await typeLine(terminalLines[i],terminalBody);await sleep(terminalLines[i].type==='cmd'?400:250)}const fl=document.createElement('div');fl.innerHTML='<span class="t-prompt">\u276F </span><span class="t-cursor"></span>';terminalBody.appendChild(fl)}
 setTimeout(runTerminal,600);setInterval(runTerminal,45000);
-
-// Kill chain
 const killchainData=[{title:'Initial Access',short:'RDP Password Spray',mitre:'T1110.003',mitreFull:'T1110.003 \u2014 Password Spraying',desc:'Hydra-driven RDP password spray against the Beachhead host using 8 usernames and 10 common passwords. 6 of 80 attempts succeeded, confirming weak password policy.',rules:[{tag:'Suricata 2000001',text:'RDP brute force \u2014 5 attempts in 60s'},{tag:'Zeek RDP_Brute_Force',text:'Connection count threshold exceeded'},{tag:'Wazuh 100001',text:'Windows Event 4625 \u2014 failed RDP logons'}]},{title:'Discovery',short:'Domain Enumeration',mitre:'T1087.002',mitreFull:'T1087.002 \u2014 Account Discovery',desc:'After foothold via RDP as jsmith, executed net user /domain, net group "Domain Admins" /domain, nltest /dclist:lab.local to map the domain.',rules:[{tag:'Wazuh 100006',text:'net.exe /domain command line match'},{tag:'Wazuh 100007',text:'nltest /dclist domain trust discovery'}]},{title:'Cred Access',short:'Mimikatz LSASS',mitre:'T1003.001',mitreFull:'T1003.001 \u2014 LSASS Memory',desc:'Downloaded Mimikatz from attacker HTTP server, ran sekurlsa::logonpasswords to extract domainadmin NTLM hash.',rules:[{tag:'Suricata 2000020',text:'HTTP URI contains "mimikatz"'},{tag:'Wazuh 100004',text:'Sysmon Event 1 \u2014 mimikatz.exe originalFileName'}]},{title:'DCSync',short:'AD Replication',mitre:'T1003.006',mitreFull:'T1003.006 \u2014 DCSync',desc:'From Kali, impacket-secretsdump performed DCSync against DC01 via DRSUAPI replication, extracting all domain hashes including krbtgt.',rules:[{tag:'Suricata DRSUAPI',text:'Non-DC source IP performing replication'},{tag:'MITRE Map',text:'T1003.006 detected on host layer'}]},{title:'Lateral Move',short:'Pass-the-Hash RDP',mitre:'T1021.001',mitreFull:'T1021.001 \u2014 Remote Desktop Protocol',desc:'Used stolen NTLM hash with xfreerdp3 /pth to authenticate to DC01, FileServer, Server02 \u2014 never needed plaintext password.',rules:[{tag:'Suricata 2000006',text:'2nd unique RDP destination from same source'},{tag:'Zeek Internal_RDP_Lateral',text:'Stateful tracking across 3 hosts'}]},{title:'Exfiltration',short:'Rclone SFTP / 443',mitre:'T1048',mitreFull:'T1048 \u2014 Exfil Over Alt Protocol',desc:'Rclone disguised in C:\\ProgramData\\Veeam\\ exfiltrated 2.03 GB via SFTP on port 443 \u2014 blending with HTTPS but actually SSH.',rules:[{tag:'Suricata 2000007',text:'SSH banner "SSH-" on port 443'},{tag:'Zeek SFTP_On_443',text:'ssh_client_version event on 443'}]},{title:'Persistence',short:'RMM Tools',mitre:'T1219',mitreFull:'T1219 \u2014 Remote Access Software',desc:'Attacker installed Atera and Splashtop RMM tools for persistent access \u2014 legitimate software, detected via TLS SNI inspection.',rules:[{tag:'Suricata 2000009',text:'TLS SNI match: atera.com'},{tag:'Suricata 2000010',text:'TLS SNI match: splashtop.com'}]},{title:'Impact',short:'RansomHub Deploy',mitre:'T1486',mitreFull:'T1486 \u2014 Data Encrypted for Impact',desc:'Final stage: vssadmin shadow copy deletion, wevtutil log clearing, file encryption with .ransomhub extension, README_RANSOMHUB.txt drops.',rules:[{tag:'Wazuh 100013',text:'vssadmin Delete Shadows /all'},{tag:'Wazuh 100015',text:'wevtutil cl security/system/application'},{tag:'Wazuh 100019',text:'.ransomhub file extension rename'},{tag:'Wazuh 100020',text:'README_RANSOMHUB.txt creation'}]}];
 const kcStages=document.getElementById('kc-stages');const kcTitle=document.getElementById('kc-title');const kcMitre=document.getElementById('kc-mitre');const kcDesc=document.getElementById('kc-desc');const kcRules=document.getElementById('kc-rules');
 killchainData.forEach((stage,i)=>{const div=document.createElement('div');div.className='kc-stage'+(i===0?' active':'');div.dataset.idx=i;div.setAttribute('role','tab');div.setAttribute('aria-selected',i===0);div.innerHTML='<div class="kc-stage-num">PHASE 0'+(i+1)+'</div><div class="kc-stage-title">'+stage.short+'</div><div class="kc-stage-mitre">'+stage.mitre+'</div>';div.addEventListener('click',()=>selectStage(i));div.addEventListener('mouseenter',()=>selectStage(i));kcStages.appendChild(div)});
 function selectStage(i){document.querySelectorAll('.kc-stage').forEach((s,j)=>{s.classList.toggle('active',j===i);s.setAttribute('aria-selected',j===i)});const stage=killchainData[i];kcTitle.style.opacity='0';kcMitre.style.opacity='0';kcDesc.style.opacity='0';kcRules.style.opacity='0';setTimeout(()=>{kcTitle.textContent='Phase 0'+(i+1)+' \xB7 '+stage.title;kcMitre.textContent=stage.mitreFull;kcDesc.textContent=stage.desc;kcRules.innerHTML=stage.rules.map(r=>'<div class="kc-rule"><span class="kc-rule-tag">'+r.tag+'</span> \xB7 '+r.text+'</div>').join('');kcTitle.style.transition=kcMitre.style.transition=kcDesc.style.transition=kcRules.style.transition='opacity 0.3s';kcTitle.style.opacity='1';kcMitre.style.opacity='1';kcDesc.style.opacity='1';kcRules.style.opacity='1'},150)}
 selectStage(0);
-
-// Card glow follow
 document.querySelectorAll('.about-card,.project-card').forEach(card=>{card.addEventListener('mousemove',(e)=>{const rect=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-rect.left)/rect.width)*100+'%');card.style.setProperty('--my',((e.clientY-rect.top)/rect.height)*100+'%')},{passive:true})});
-
-// Parallax background text
 const bgText=document.querySelector('.hero-bg-text');window.addEventListener('scroll',()=>{if(bgText)bgText.style.transform='translateY(calc(-50% + '+window.scrollY*0.3+'px))'},{passive:true});
-
-// Orb parallax
 const orbs=document.querySelectorAll('.orb');document.addEventListener('mousemove',(e)=>{const x=(e.clientX/window.innerWidth-0.5)*30;const y=(e.clientY/window.innerHeight-0.5)*30;orbs.forEach((orb,i)=>{const f=i===0?1:-1;orb.style.transform='translate('+x*f+'px, '+y*f+'px)'})},{passive:true});
-
-// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',(e)=>{const target=document.querySelector(a.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}})});
 </script>
 </body>
